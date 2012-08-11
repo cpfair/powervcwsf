@@ -7,5 +7,5 @@ Requirements
 ------------
  * A recent version of PHP (5.2ish? who knows, can't be bothered to check)
  * MySQL server, if you're not using the default one
- * Apache with mod_rewrite to allow "More details"/Insight dialogs to work. I'm a sucker for pretty URLs that the user never sees
+ * Apache with mod_rewrite to allow "More details"/Insight dialogs, participant images to work. I'm a sucker for pretty URLs that the user never sees
  * A decent browser

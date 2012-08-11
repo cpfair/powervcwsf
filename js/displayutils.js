@@ -84,8 +84,15 @@ DisplayUtils.HighlightTerms=function(string, queryparam){
 };
 
 DisplayUtils.PreloadImages=function(imgs){
-	$.imgpreload(imgs,{
-		each: DisplayUtils.ImagePreloadCompleteSingle
+	DisplayUtils.PreloadImageBlock(imgs, 5, 0);
+};
+DisplayUtils.PreloadImageBlock=function(allImgs, blockSz, blockIndex){
+	$.imgpreload(allImgs.slice(blockIndex, blockSz + blockIndex),{
+		each: DisplayUtils.ImagePreloadCompleteSingle,
+		all: function(){
+			var newBlockSz=Math.min(blockSz, allImgs.length-blockIndex);
+			DisplayUtils.PreloadImageBlock(allImgs, newBlockSz, blockIndex+blockSz);
+		}
 	});
 };
 

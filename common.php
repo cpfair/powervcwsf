@@ -9,5 +9,3 @@ if (isset($_REQUEST["mode"]) && $_REQUEST["mode"]=="participants"){
 } else {
 	$MODE=MODE_PROJECTS;
 }
-
-$ROOT="http://127.0.0.1/powervcwsf/";
