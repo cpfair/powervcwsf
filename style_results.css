@@ -1,0 +1,131 @@
+
+#resultsTable th {
+	color:#000;
+	text-shadow:1px 1px 0 #fff;
+	padding-top:5px;
+}
+.result {
+	background-color:#fff;
+	position:relative;
+	border:1px solid #000;
+	margin:5px 5px;
+	padding:7px;
+	border-radius:5px;
+
+}
+.result .year {
+	position:absolute;
+	
+	top:10px;
+	left:10px;
+
+	font-weight:bold;
+	font-size:35px;
+	color:rgba(255,255,255,1);
+	text-shadow:-1px 1px 0 #000;
+	width:29px;
+	height:82px;
+}
+.result h1 {
+	font-size:24px;
+	margin-top:0;
+	margin-bottom:0;
+}
+.result .finalistName {
+	margin-right:5px;
+	font-size:17px;
+	font-weight:bold;
+}
+.result .region {
+	font-size:17px;
+	font-weight:normal;
+	font-style:italic;
+	margin-left:0px;
+}
+.result img {
+	float:left;
+	border-radius:2px;
+	border:1px solid #333;
+	margin-right:10px;
+}
+.result .synopsis {
+	margin-top:10px;
+	/*text-indent:25px;*/
+	font-style:italic;
+}
+
+.result .awards {
+	float:right;
+	clear:right;
+	position:relative;
+	border:1px solid #777;
+	border-radius:3px;
+	padding:5px;
+	
+	
+	margin-left:5px;
+	padding-top:0px;
+	background-color:#eee;
+}
+.result .awards h1 {
+	
+	display:block;
+	font-size:15px;
+	
+	left:5px;
+	
+	padding:0 3px;
+	display:none;
+}
+.result .awards .awardGroup {
+	border-bottom:1px solid #ddd;
+	font-style:italic;
+	text-align:center;
+	font-size:80%;
+}
+.result .awards .awardValue {
+	margin-left:10px;
+	float:right;
+}
+.result .awards .awardsTotal {
+	border:none;
+	border-top:1px solid #999;
+	font-weight:bold;
+	text-align:left;
+	font-style:italic;
+	padding-left:18px;
+	background-image:url('img/rating-trophy.png');
+	background-repeat:no-repeat;
+	background-position:center left;
+}
+.result .awards .awardsTotal .awardValue {
+	font-weight:bold;
+
+}
+.result .actions {
+	float:right;
+	clear:right;
+	margin-bottom:5px;
+}
+.result .action {
+	padding-left:18px;
+	background-repeat:no-repeat;
+	background-position:left center;
+	color:#333;
+	margin-left:5px;
+	font-size:90%;
+}
+ .result .iconed {
+ 	padding-left:18px;
+	background-repeat:no-repeat;
+	background-position:left center;
+ }
+.result .pdfAction {
+	background-image:url('img/file-duplicate.png');
+}
+.result .vcwsfAction {
+	background-image:url('img/edition-link.png');
+}
+.result .division {
+	background-image:url('img/various-test-tube-2.png');
+}

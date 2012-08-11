@@ -1,0 +1,11 @@
+RewriteEngine On
+
+RewriteRule projects$ index.php?mode=projects
+RewriteRule participants$ index.php?mode=participants
+
+RewriteRule insight/([^/]+)/(.+)$ insight/$1.php?param=$2 
+#well this was pointless ^
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule imgcache/(\d+)_project.jpg vsf_pull_project_image.php?id=$1
+
