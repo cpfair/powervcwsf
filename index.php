@@ -1,8 +1,6 @@
 <?php
 include "common.php";
-
-
-
+header("Content-Type: text/html; charset=utf8");
 ?>
 <!doctype html>
 <html>
