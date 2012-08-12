@@ -1,5 +1,5 @@
 <?php
-
+mb_internal_encoding("UTF-8"); 
 $DB=new mysqli("cwsf.cpfx.ca","pvcwsf_public","public","powervcwsf");
 define("MODE_PROJECTS",0);
 define("MODE_PARTICIPANTS",1);

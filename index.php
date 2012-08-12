@@ -1,12 +1,13 @@
 <?php
 include "common.php";
-header("Content-Type: text/html; charset=utf8");
+header("Content-Type: text/html; charset=UTF-8");
 ?>
 <!doctype html>
 <html>
 	<head>
-		<title>Power Virtual CWSF</title>
-		<meta http-equiv="Content-type" value="text/html; charset=utf-8">
+		<title>Power Virtual Canada-Wide Science Fair</title>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
 		<meta name="Description" content="Search, filter, and sort all Canada-Wide Science Fair results.">
 		<meta name="Keywords" content="Canada Wide Science Fair, CWSF, ESPC, Results, Awards, Search, Filter, Historical, Statistics, Database, Records, Sort, Order, youth science, youth science canada">
 
