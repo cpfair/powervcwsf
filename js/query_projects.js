@@ -87,8 +87,8 @@ Query.AppendResultsToTable=function(results){
 		$("<img src=\"img/blank"+(res.FinalistNames[1]!==null?"_dual":"_single")+".png\" actualsrc=\"imgcache/"+res.RegID+"_project.jpg\" alt=\"Project Image\">").appendTo(resultHolder);
 		images.push("imgcache/"+res.RegID+"_project.jpg");
 		var actionButtons=$("<div class=\"actions\">").appendTo(resultHolder);
-		$("<a class=\"pdfAction action\" target=\"_new\">").attr("href","https://secure.ysf-fsj.ca/virtualcwsf/projectdetailspdf.php?id="+res.RegID).text("Printable PDF").appendTo(actionButtons);
-		$("<a class=\"vcwsfAction action\" target=\"_new\">").attr("href","https://secure.ysf-fsj.ca/virtualcwsf/projectdetails.php?id="+res.RegID).text("View on YSC").appendTo(actionButtons);
+		$("<a class=\"pdfAction action\" target=\"_new\">").attr("href","https://secure.youthscience.ca/virtualcwsf/projectdetailspdf.php?id="+res.RegID).text("Printable PDF").appendTo(actionButtons);
+		$("<a class=\"vcwsfAction action\" target=\"_new\">").attr("href","https://secure.youthscience.ca/virtualcwsf/projectdetails.php?id="+res.RegID).text("View on YSC").appendTo(actionButtons);
 
 		var awards=$.parseJSON(res.AwardsData);
 		if (awards.length!==0){
