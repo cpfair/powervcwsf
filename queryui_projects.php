@@ -36,14 +36,11 @@ $DivisionList=$DB->query("SELECT `Name`,`NormalizedName`,`FirstSeenYear`,`LastSe
 				<td>
 					<select name="yearSearch" id="yearSearch">
 						<option value="">Any</option>
-						<option value="2012">2012</option>
-						<option value="2011">2011</option>
-						<option value="2010">2010</option>
-						<option value="2009">2009</option>
-						<option value="2008">2008</option>
-						<option value="2007">2007</option>
-						<option value="2006">2006</option>
-						<option value="2005">2005</option>
+						<?php
+							for ($year=$UpToDateYear; $year >= 2005; $year--) { 
+								echo "<option value=\"$year\">$year - ".$FairYears[$year]."</option>";
+							}
+						?>
 					</select>
 				</td>
 			<tr>

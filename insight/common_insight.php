@@ -56,14 +56,3 @@ function ArrayListPlural($list){
 function FormatCurrency($val){
 	return '$'.number_format($val);
 }
-
-$FairYears=array();
-$FairYears[2005]="Vancouver";
-$FairYears[2006]="Saguenay";
-$FairYears[2007]="Truro";
-$FairYears[2008]="Ottawa";
-$FairYears[2009]="Winnipeg";
-$FairYears[2010]="Peterborough";
-$FairYears[2011]="Toronto";
-$FairYears[2012]="Charlottetown";
-$FairYears[2013]="Lethbridge";
