@@ -49,6 +49,7 @@ header("Content-Type: text/html; charset=UTF-8");
 		  })();
 
 		</script>
+		<link rel="icon" type="image/png" href="/favicon.png">
 	</head>
 	<body>
 		
