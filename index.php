@@ -12,7 +12,7 @@ header("Content-Type: text/html; charset=UTF-8");
 		<meta name="Keywords" content="Canada Wide Science Fair, CWSF, ESPC, Results, Awards, Search, Filter, Historical, Statistics, Database, Records, Sort, Order, youth science, youth science canada">
 
 		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<link rel="stylesheet" type="text/css" href="cs/style_results.css">
+		<link rel="stylesheet" type="text/css" href="css/style_results.css">
 		<link rel="stylesheet" type="text/css" href="css/style_insight.css">
 		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 		<script type="text/javascript" src="js/jquery.address-1.4.min.js"></script>
