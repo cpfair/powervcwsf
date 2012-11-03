@@ -1,5 +1,5 @@
 <?php
-
+require_once "common.php";
 $RegionList=$DB->query("SELECT `regions`.`Name`,`regions`.`NormalizedName`,`regions`.`ProvTerr` FROM `regions`");
 
 ?>

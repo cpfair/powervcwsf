@@ -1,4 +1,5 @@
 <?php 
+require_once "common.php";
 $DivisionList=$DB->query("SELECT `Name`,`NormalizedName`,`FirstSeenYear`,`LastSeenYear` FROM `divisions`");//fixed
 ?>
 

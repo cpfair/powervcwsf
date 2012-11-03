@@ -1,5 +1,5 @@
 <?php
-include "common.php";
+require_once "common.php";
 header("Content-Type: text/html; charset=UTF-8");
 ?>
 <!doctype html>
