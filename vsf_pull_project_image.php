@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL);
 
 function smart_resize_image( $file, $width = 0, $height = 0, $proportional = false, $output = 'file', $delete_original = true, $use_linux_commands = false )
     {
@@ -121,13 +122,22 @@ if (file_exists($path)){
 	die;
 }
 
-$img=file_get_contents("https://secure.ysf-fsj.ca/virtualcwsf/viewphoto.php?width=$size&id=$id");
+$fout = fopen($path,"wb");
+$ch = curl_init("https://secure.youthscience.ca/virtualcwsf/viewphoto.php?width=$size&id=$id");
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+curl_setopt($ch, CURLOPT_SSLVERSION, 3);
+curl_setopt($ch, CURLOPT_FILE, $fout);
+curl_setopt($ch, CURLOPT_HEADER, 0); 
 
-if (strlen($img)==0){
+curl_exec($ch);
+fclose($fout);
+
+if (filesize($path)==0){
     //fail
+	unlink($path);
     die;
 }
-file_put_contents($path,$img);
 
 smart_resize_image($path,100,9999999,true);
 
