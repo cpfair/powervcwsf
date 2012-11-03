@@ -2,8 +2,12 @@ Insight={};
 Insight.Width=800;//magic # w/ CSS
 
 Insight.Show=function(provider,parameter){
-	$.get("insight/"+provider+"/"+parameter,Insight.ShowCallback);
 	Insight.CreateDialog();
+	if (provider=="local"){
+		Insight.ShowCallback(parameter);
+	} else {
+		$.get(Query.Platform.APIBase()+"insight/"+provider+"/"+parameter,Insight.ShowCallback);	
+	}
 };
 
 Insight.CreateDialog=function(){
@@ -18,9 +22,6 @@ Insight.Close=function(){
 };
 
 Insight.ShowCallback=function(content){
-	//var sizingDiv=$("<div>").css("width",Insight.Width).html(content).appendTo(document.body);
-	//var height=$(sizingDiv).height();
-	//$(sizingDiv).remove();
 	$(".insightDiag").html(content);
 	$(".insightDiag").css("top",$(window).scrollTop()+$(window).height()*0.1);
 };

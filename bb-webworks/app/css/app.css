@@ -1,0 +1,159 @@
+html {
+	overflow-x:hidden;
+}
+body {
+	width:100%;
+	overflow-x:hidden;
+	overflow-y:hidden;	
+}
+
+@-webkit-keyframes spin {
+  from { -webkit-transform: rotate(0deg); }
+  to { -webkit-transform: rotate(360deg); }
+}
+.loading {
+	width:65px;
+	height:65px;
+	background-image:url('../img/loading.png');
+	opacity:0.9;
+	-webkit-animation-name: spin; 
+	-webkit-animation-duration: 500ms;
+	-webkit-animation-iteration-count: infinite; 
+	-webkit-animation-timing-function: linear;
+}
+
+.loading.small {
+	width:49px;
+	height:49px;
+	background-image:url('../img/loading_sm_white.png');
+}
+
+#bodyWrap {
+	position:absolute;
+	left:0;
+	right:0;
+	top:0;
+	bottom:0;
+	visibility: hidden
+}
+
+#splash {
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	z-index:999;
+}
+#splash .bg {
+	position:absolute;
+	width:100%;
+	height:100%;
+}
+#splash .fg {
+	left:50%;
+	top:50%;
+	position:absolute;
+	margin-left:-300px;
+	margin-top:-300px;
+}
+#splash .loading {
+	position:absolute;
+	left:50%;
+	top:89%;
+	z-index:999;
+	margin-left:-24px;
+}
+
+fieldset {
+	border:none;
+	background-color:transparent;
+	box-shadow:none;
+}
+fieldset legend {
+	text-align:center;
+}
+
+fieldset table {
+	margin:0 !important;
+	clear:none;
+	float:left;
+}
+.fieldGroup.right {
+	width:36%;
+}
+.fieldGroupDivider {
+	position:absolute;
+	width:1px;
+	top:10%;
+	bottom:10%;
+	left:-55px;
+	background-color:#777;
+	border-left:1px solid #333;
+}
+#searchFields .clearShortcut {
+	background-image:url('../img/clear2.png');
+	width:24px;
+	height:24px;
+}
+
+#searchFields {
+	left:0;
+	right:0;
+	background-image:url('../img/intro-bg.png');
+}
+
+radiogroup input {
+	margin-right:7px !important;
+}
+
+#introduction {
+	display:none;
+}
+
+#resultsTable .loadingWrap {
+	height:125px;
+}
+
+#resultsTable .loading {
+	opacity:0.5;
+	position:relative;
+	left:50%;
+	margin-left:-32px;
+}
+
+#resultsContainer {
+	padding-bottom:5px;
+}
+
+.actions {
+	margin-top:3px;
+}
+
+.awards {
+	margin-top:7px !important;
+	max-width:450px; /* I'm looking at you, kyle schole */
+	margin-left:6px !important;
+}
+
+#footer {
+	background-image:url('../img/intro-bg.png');
+}
+
+.insightDiag {
+	background-image:url('../img/intro-bg.png');
+	background-size:auto 100%;
+}
+
+@media screen and (orientation:portrait) { 
+	.fieldGroupDivider {
+		display:none;
+	}
+	.fieldGroup {
+		display:block;
+		float:none !important;
+		width:auto !important;
+		left:auto;
+		right:auto;
+	}
+}

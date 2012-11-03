@@ -94,7 +94,7 @@
 	text-align:left;
 	font-style:italic;
 	padding-left:18px;
-	background-image:url('img/rating-trophy.png');
+	background-image:url('../img/rating-trophy.png');
 	background-repeat:no-repeat;
 	background-position:center left;
 }
@@ -121,11 +121,11 @@
 	background-position:left center;
  }
 .result .pdfAction {
-	background-image:url('img/file-duplicate.png');
+	background-image:url('../img/file-duplicate.png');
 }
 .result .vcwsfAction {
-	background-image:url('img/edition-link.png');
+	background-image:url('../img/edition-link.png');
 }
 .result .division {
-	background-image:url('img/various-test-tube-2.png');
+	background-image:url('../img/various-test-tube-2.png');
 }

@@ -4,7 +4,7 @@ class QueryBuilder {
 	public $SQLCount=true;
 
 	protected $Table=null;
-	protected $IgnoreParams=array("sortasc","sortdesc","mode","page","debug");
+	protected $IgnoreParams=array("sortasc","sortdesc","mode","page","debug","pagesz");
 	protected $SplitFields=array();
 	protected $OrderClauses=array();
 	protected $WhereClauses=array();
@@ -89,6 +89,7 @@ class QueryBuilder {
 		//pagination
 		
 		$page=0;
+		if (isset($params["pagesz"])) $this->PageLength=min(50,intval($params["pagesz"]));
 		if (isset($params["page"])) $page=intval($params["page"]);
 		$this->StartIndex=$page*$this->PageLength;
 		

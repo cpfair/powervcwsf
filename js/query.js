@@ -1,9 +1,15 @@
 Query={};
+Query.Platform={};
+Query.Platform.ID="Online";
+Query.Platform.Mobile=false;
+Query.Platform.AddressProxy=true;
+Query.Platform.PageSize=50;
 Query.Populating=false;
 Query.Loading=true;
 Query.JustInitiated=true;
 Query.LoadedAllResultsForQuery=false;
 Query.SearchKeypressTimer=undefined;
+Query.FloatedSearchFields=false;
 
 Query.RegisteredFields=[];
 Query.Headers=[];
@@ -12,6 +18,8 @@ Query.CurrentPage=0;
 
 Query.SortAsc=[];
 Query.SortDesc=[];
+
+Query.ParamStore={};
 
 Query.RegisterField=function(slug,id,queryParam,translator,exclusive){
 	var field={};
@@ -42,7 +50,7 @@ Query.Init=function(){
 		q.field.field=q;//ikr?
 		
 		//hook change events
-		if ($(q.field).attr("type")=="text"){
+		if (Query.IsFieldTextual(q.field) && Query.Platform.ID!="BB-PlayBook"){
 			$(q.field).keyup(function(){
 				var me=this;
 				if (this.lastval!=$(this).val()){
@@ -70,7 +78,7 @@ Query.Init=function(){
 
 		Query.UpdateSelectStyling(q.field);
 	}
-
+	
 	//init table headers
 	for (var i = 0 ; i < Query.Headers.length; i++) {//this is a wtf template btw, sublimetext2
 		var h=Query.Headers[i];
@@ -84,21 +92,26 @@ Query.Init=function(){
 		$("#resultsHeaders").append(header);
 		header.click(function(){
 			$(".sortIcon",this).click();
+			return false;
 		});
 		header.attr("title","Cycle sorting of this column").css("cursor","pointer");
 
 	}
 
 	//endless scroll
-	$(document).scroll(function() {
-		
-		if ($(document).height() - ($(document).scrollTop()+$(window).height()) < 1000) {
-			if (Query.LoadedAllResultsForQuery || Query.Loading) return;
-			Query.CurrentPage++;
-			Query.Query();
-		}
-	});
-	$.address.change(Query.BuildFromAddress);
+	if (Query.Platform.ID!="BB-PlayBook"){
+		$(document).scroll(Query.InfiniteScroll);
+	} else {
+		$(document).scroll(Query.InfiniteScrollMobile);
+	}
+	
+
+	if (!Query.Platform.AddressProxy){
+		Query.BuildFromAddress(Query.ParamStore);
+	} else {
+		$.address.change(Query.BuildFromAddress);
+	}
+	
 
 	Query.SetupRegionFilter();
 	Query.SetupDivisionFilter();
@@ -106,10 +119,25 @@ Query.Init=function(){
 
 	
 };
-$(document).ready(Query.Init);
+
+Query.InfiniteScroll=function(){
+	if ($(document).height() - ($(document).scrollTop()+$(window).height()) < 1000) {
+		if (Query.LoadedAllResultsForQuery || Query.Loading) return;
+		Query.CurrentPage++;
+		Query.Query();
+	}
+};
+
+Query.InfiniteScrollMobile=function(){
+	if ($("#resultsTable").height() - ($(document).scrollTop()+$(window).height()) < 1000) {
+		if (Query.LoadedAllResultsForQuery || Query.Loading) return;
+		Query.CurrentPage++;
+		Query.Query();
+	}
+};
 
 Query.ShowHideClearShortcut=function(element){
-	if ($(element).val()!==undefined && $(element).val()!=="" && $(element).attr("type")!="text"){
+	if ($(element).val()!==undefined && $(element).val()!=="" && (!Query.IsFieldTextual(element) || Query.Platform.Mobile)){
 		$(".clearShortcut",element.parentNode).show().css("display","inline-block");
 	} else {
 		$(".clearShortcut",element.parentNode).hide();
@@ -127,6 +155,10 @@ Query.UpdateSelectStyling=function(element){
 };
 
 Query.FieldChanged=function(){
+	if (Query.Platform.ID=="BB-PlayBook") {
+		$(this).blur();
+		$("#resultsContainer *").remove();
+	}
 	Query.ShowHideClearShortcut(this);
 	Query.UpdateSelectStyling(this);
 	if (this.field.exclusive){
@@ -150,17 +182,31 @@ Query.Build=function(){
 		var q=Query.RegisteredFields[qid];
 		var val=$(q.field).val();
 		q.value=val;
-		$.address.parameter(q.slug,val.replace(/\s/g,"%20"));//spaces=don't play well
+		if (Query.Platform.AddressProxy){
+			$.address.parameter(q.slug,val.replace(/\s/g,"%20"));//spaces=don't play well
+		} else {
+			Query.ParamStore[q.slug]=val;
+		}
+		
+	}
+	if (!Query.Platform.AddressProxy){
+		Query.BuildFromAddress(Query.ParamStore);
 	}
 };
 
-Query.BuildFromAddress=function(){
+Query.BuildFromAddress=function(passParams){
 	
 	var inSearch=false;
 	var values={};
 	for (var qid in Query.RegisteredFields){
 		var q=Query.RegisteredFields[qid];
-		var val=$.address.parameter(q.slug);
+		var val;
+		if (Query.Platform.AddressProxy){
+			val = $.address.parameter(q.slug);
+		}
+		else {
+			val = passParams[q.slug];
+		}
 		if (val!==undefined) val=val.replace(/%20/g," ");
 		if ($(q.field).val()!=val) {$(q.field).val(val);}
 		Query.ShowHideClearShortcut(q.field);
@@ -216,9 +262,11 @@ Query.BuildFromAddress=function(){
 };
 
 Query.Query=function(page){
+	if (Query.onQuery !== undefined) Query.onQuery();
 	if (Query.LoadedAllResultsForQuery) return;
 	Query.CurrentValues.page=Query.CurrentPage;
-	$.post("query.php",Query.CurrentValues,Query.QueryCallback,"json");
+	Query.CurrentValues.pagesz=Query.Platform.PageSize;
+	$.post(Query.Platform.APIBase()+"query.php",Query.CurrentValues,Query.QueryCallback,"json");
 	Query.Loading=true;
 	$("#resultCt").hide();
 	$("#footer #loading").show();
@@ -253,7 +301,9 @@ Query.InsightButton=function(){
 Query.QueryCallback=function(data){
 	//clear old table contents
 	if (Query.CurrentPage===0) $("#resultsTableBody tr,#resultsContainer div").remove();
-	if (data.rows.length!=50) {Query.LoadedAllResultsForQuery=true;}//50=page length on server side
+	if (data.rows.length!=Query.Platform.PageSize) {Query.LoadedAllResultsForQuery=true;}
+
+	if (Query.beforePopulate!==undefined) Query.beforePopulate();
 
 	if (data.rows.length!==0) {
 		Query.AppendResultsToTable(data.rows);
@@ -267,10 +317,14 @@ Query.QueryCallback=function(data){
 	if (Query.LoadedAllResultsForQuery && $("#endMark").length===0){
 		Query.CreateEndmark();
 	}
+	if (Query.iScroll!==undefined){
+			setTimeout(function () {Query.iScroll.refresh();}, 0);
+	}
+	if (Query.onPopulate!==undefined) Query.onPopulate();
 };
 
 Query.CreateEndmark=function(){
-	var endmarkElement=$("<div id=\"endMark\"><img src=\"img/endmark.png\" title=\"No more results\"></div>");
+	var endmarkElement=$("<div id=\"endMark\"><img src=\""+Query.Platform.ResourceBase()+"img/endmark.png\" title=\"No more results\"></div>");
 	$("#resultsContainer").append(endmarkElement);
 };
 
@@ -287,6 +341,7 @@ Query.RefineButton=function(e){
 		if (q.slug==this.fieldSlug){
 
 			$(q.field).val(this.fieldValue);
+			Query.UpdateSelectStyling(q.field);
 			Query.Build();
 			break;
 		}
@@ -321,6 +376,7 @@ Query.UISort=function(e){
 		$(this).removeClass("asc").addClass("desc");
 	}
 	Query.DoSort();
+	return false;
 };
 
 Query.DoSort=function(){
@@ -340,28 +396,59 @@ Query.DoSort=function(){
 	$.address.parameter("sortasc",Acols);
 	$.address.parameter("sortdesc",Dcols);
 	
-	Query.BuildFromAddress();
+	Query.BuildFromAddress(Query.ParamStore);
+};
+
+Query.IsFieldTextual=function(field){
+	return $(field).attr("type")=="text" || $(field).attr("type")=="search";
+};
+
+Query.FloatSearchFields=function(){
+	if (Query.FloatedSearchFields) return;
+	Query.FloatedSearchFields=true;
+	$("#searchFields").css({"position":"fixed","top":"-"+$("#searchFields").outerHeight()+"px"});
+	$("#searchFields").transition({"top":"0px"});
+	
+	$("#resultsTable").css({"padding-top":$("#searchFields").outerHeight()+"px"});
+};
+
+Query.UnfloatSearchFields=function(noAnim){
+	if (!Query.FloatedSearchFields) return;
+	Query.FloatedSearchFields=false;
+	if (noAnim===false){
+		$("#searchFields").css({"position":"relative","top":"auto"});
+		$("#resultsTable").css({"padding-top":"0px"});
+	} else {
+		$("#searchFields").transition({"top":"-"+$("#searchFields").outerHeight()+"px"},function(){
+			$("#searchFields").css({"position":"relative","top":"auto"});
+			$("#resultsTable").css({"padding-top":"0px"});
+		});
+	}
+	
 };
 
 //region filtering code
 var Regions=[];
 Query.SetupRegionFilter=function(){
 	$("#provSelect").change(Query.FilterRegions);
-	$("#regionSelect option").each(function(){
+	$("#regionSelect option",document).each(function(){
+
 		var reg={};
 		reg.display=$(this).text();
 		if (reg.display=="Any") return;
 		reg.value=$(this).attr("value");
 		reg.province=$(this).attr("province");
 		Regions.push(reg);
+
 	});
 };
 
 Query.FilterRegions=function(){
-
+	if (Regions.length===0) return;
 	var prevValue=$("#regionSelect").val();
 	
 	var curProv=$("#provSelect").val();
+
 	$("#regionSelect option:not(:first)").remove();
 	var persistValue=false;
 	for (var i = 0; i < Regions.length; i++) {
@@ -400,7 +487,7 @@ Query.SetupDivisionFilter=function(){
 };
 
 Query.FilterDivisions=function(){
-
+	if (Divisions.length===0) return;
 	var prevValue=$("#divisionSearch").val();//just realized I changed from XYZselect to XYZsearch somewhere along the way :\
 	
 	var curProv=parseInt($("#yearSearch").val(),10);
@@ -422,4 +509,18 @@ Query.FilterDivisions=function(){
 		$("#divisionSearch").val("");
 		Query.Build();
 	}
+};
+
+// platform stuff
+Query.Platform.APIBase=function(){
+	if (Query.Platform.ID=="Online"){
+		return "";
+	}
+	return "http://cwsf.cpfx.ca/";
+};
+Query.Platform.ResourceBase=function(){
+	if (Query.Platform.ID=="Online"){
+		return "";
+	}
+	return "common/";//in an app or whatevs
 };

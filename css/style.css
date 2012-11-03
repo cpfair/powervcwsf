@@ -131,7 +131,7 @@ fieldset legend {
 	width:16px;
 	height:16px;
 	overflow:hidden;
-	background-image:url('img/clear2.png');
+	background-image:url('../img/clear2.png');
 	text-indent:-999px;
 	opacity:0.2;
 	top:50%;
@@ -148,7 +148,7 @@ fieldset legend {
 }
 
 #introduction {
-	background-image:url("img/intro-bg.png");
+	background-image:url("../img/intro-bg.png");
 	margin-top:-20px;
 	background-color:#fff;
 	border-bottom:1px solid #aaa;
@@ -235,7 +235,7 @@ fieldset legend {
 	width:3000px;
 }
 tr .truncMask {
-	background-image:url('img/truncategrad.png');
+	background-image:url('../img/truncategrad.png');
 	width:200px;
 	height:100%;
 	position:absolute;
@@ -256,18 +256,18 @@ tr.alt .truncMask {
 	display:inline-block;
 	width:16px;
 	height:16px;
-	background-image:url('img/sort.png');
+	background-image:url('../img/sort.png');
 	cursor:pointer;
 }
 .sortIcon.asc {
-	background-image:url('img/sortasc.png');
+	background-image:url('../img/sortasc.png');
 }
 .sortIcon.desc {
-	background-image:url('img/sortdesc.png');
+	background-image:url('../img/sortdesc.png');
 }
 .awardIcon {
 	display:inline-block;
-	background-image:url('img/rating-trophy.png');
+	background-image:url('../img/rating-trophy.png');
 	height:16px;
 	width:16px;
 	margin:0 5px;
@@ -278,7 +278,7 @@ tr.alt .truncMask {
 	width:16px;
 	height:16px;
 	cursor:pointer;
-	background-image:url('img/datas-funnel.png');
+	background-image:url('../img/datas-funnel.png');
 	text-indent:-111px;
 	overflow:hidden;
 	opacity:0.5;
@@ -288,7 +288,7 @@ tr.alt .truncMask {
 	opacity:1;
 }
 .insightButton {
-	background-image:url('img/datas-layers.png');
+	background-image:url('../img/datas-layers.png');
 }
 
 .searchHighlight {

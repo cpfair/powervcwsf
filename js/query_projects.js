@@ -44,6 +44,8 @@ function FormatMultiple(one, two,safe){
 Query.AppendResultsToTable=function(results){
 	var images=[];
 	var alt=false;
+	var imgbase=Query.Platform.APIBase();
+	var resbase=Query.Platform.ResourceBase();
 	for (var i = 0; i < results.length; i++) {
 		var res=results[i];
 		/*var row=$("<tr>").appendTo($("#resultsTableBody"));
@@ -82,10 +84,10 @@ Query.AppendResultsToTable=function(results){
 
 		var resultHolder=$("<div class=\"result\">").appendTo($("#resultsContainer"));
 
-		var year=$("<div class=\"year\">").css("background-image","url('img/years/"+res.Year+".png')").attr("title",res.Year).appendTo(resultHolder);
+		var year=$("<div class=\"year\">").css("background-image","url('"+resbase+"img/years/"+res.Year+".png')").attr("title",res.Year).appendTo(resultHolder);
 
-		$("<img src=\"img/blank"+(res.FinalistNames[1]!==null?"_dual":"_single")+".png\" actualsrc=\"imgcache/"+res.RegID+"_project.jpg\" alt=\"Project Image\">").appendTo(resultHolder);
-		images.push("imgcache/"+res.RegID+"_project.jpg");
+		$("<img src=\""+resbase+"img/blank"+(res.FinalistNames[1]!==null?"_dual":"_single")+".png\" actualsrc=\""+imgbase+"imgcache/"+res.RegID+"_project.jpg\" alt=\"Project Image\">").appendTo(resultHolder);
+		images.push(imgbase+"imgcache/"+res.RegID+"_project.jpg");
 		var actionButtons=$("<div class=\"actions\">").appendTo(resultHolder);
 		$("<a class=\"pdfAction action\" target=\"_new\">").attr("href","https://secure.youthscience.ca/virtualcwsf/projectdetailspdf.php?id="+res.RegID).text("Printable PDF").appendTo(actionButtons);
 		$("<a class=\"vcwsfAction action\" target=\"_new\">").attr("href","https://secure.youthscience.ca/virtualcwsf/projectdetails.php?id="+res.RegID).text("View on YSC").appendTo(actionButtons);

@@ -72,7 +72,7 @@ function StopPropagation(event){
 
 
 DisplayUtils.HighlightTerms=function(string, queryparam){
-	if (Query.CurrentValues[queryparam]===undefined) return string;
+	if (Query.CurrentValues[queryparam]===undefined || Query.CurrentValues[queryparam].length==0) return string;
 	var val=Query.CurrentValues[queryparam].split('&&');
 		
 	for (var k in val){

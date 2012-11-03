@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets"
+   xmlns:rim="http://www.blackberry.com/ns/widgets"
+   version="1.0.0.0">
+ 
+   <name>Virtual CWSF</name>
+   <description>Browse Canada-Wide Science Fair projects</description>
+   <author href="http://cpfx.ca" rim:copyright="Collin Fair" email="cpf@cpfx.ca">Collin Fair</author>
+   <content src="index.html"/>
+   <authorId>gYAAgBVsG3zQfd7BOw6MISxtKYk</authorId>
+   <icon src="img/icon.png" />
+   <rim:loadingScreen foregroundImage="img/splash.png" backgroundImage="img/splash-bg.png"
+    onFirstLaunch="true"/>
+   <rim:orientation mode="landscape"/>
+ 	<feature id="blackberry.app" required="true" version="1.0.0.0"/>
+	<feature id="blackberry.app.event" required="true" version="1.0.0.0"/>
+	<feature id="blackberry.invoke" />
+	
+</widget>

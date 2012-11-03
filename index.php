@@ -34,6 +34,7 @@ header("Content-Type: text/html; charset=UTF-8");
 		?>
 		<script type="text/javascript">
 			Query.Mode=<?php echo $MODE;?>;
+			$(document).ready(Query.Init);
 		</script>
 		<script type="text/javascript">
 

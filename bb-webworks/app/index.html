@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Power Virtual Canada-Wide Science Fair</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" id="viewport" content="initial-scale=1.0,user-scalable=no" />
+        <meta http-equiv="PRAGMA" content="NO-CACHE">
+        <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+        <meta http-equiv="EXPIRES" content="Mon, 22 Jul 2002 11:12:01 GMT">
+        <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="common/css/style.css">
+        <link rel="stylesheet" type="text/css" href="common/css/style_results.css">
+        <link rel="stylesheet" type="text/css" href="common/css/style_insight.css">
+        <link rel="stylesheet" type="text/css" href="css/app.css">
+        <script type="text/javascript" src="common/js/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="http://cwsf.cpfx.ca/bb-webworks/appstart.js"></script>
+        <script type="text/javascript" src="common/js/jquery.address-1.4.min.js"></script>
+        <script type="text/javascript" src="common/js/jquery.cycle.lite.js"></script>
+        <script type="text/javascript" src="common/js/jquery.imageloader.min.js"></script>
+        <script type="text/javascript" src="common/js/displayutils.js"></script>
+        <script type="text/javascript" src="common/js/query.js"></script>
+        <script type="text/javascript" src="common/js/insight.js"></script>
+        <script type="text/javascript" src="common/js/query_projects.js"></script>
+        <script type="text/javascript" src="js/jquery.transit.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+        
+        
+    </head>
+    <body>
+        <div id="splash">
+            <img src="img/splash-bg.png" class="bg"/>
+            <img src="img/splash.png" class="fg"/>
+            <div class="loading small"></div>
+        </div>
+        <div id="bodyWrap">
+            <div id="bodyScroll">
+                <div id="searchFields">
+                    <div style="clear:both"> </div>
+                    <div id="searchTips">Use <i>&quot;this && that&quot;</i> to require multiple terms</div>
+                </div>
+                <div id="introduction">
+                    <h1>Welcome to Power VCWSF</h1>
+                    <p>
+                        Here, you can search every <a href="http://cwsf.youthsciece.ca" target="_blank">Canada-Wide Science Fair</a> project from 2005 to today. You can also sort projects by nearly anything, find all the projects that won a specific award, view a participant's science fair history, and more.
+                    </p>
+                    <p>
+                        These results are derived from <a href="http://apps.ysf-fsj.ca/virtualcwsf/" target="_blank">the official CWSF results system</a>.
+                    </p>
+                    <h2>Update:</h2>
+                    <p>
+                        As of August 2012, there is a bug in the official CWSF results system that returns incorrect divisions for some projects. Because of this, I have temporarily removed the ability to search by project division. 
+                    </p>
+                </div>
+                <div id="resultsTable">
+                    <div id="scroll">
+                        <table style="width:100%;">
+                            <thead>
+                            <tr id="resultsHeaders">
+
+                            </tr>
+                            </thead>
+                            <tbody id="resultsTableBody">
+
+                            </tbody>
+                        </table>
+                            <div id="resultsContainer">
+                        </div>
+                        <div class="loadingWrap">
+                            <div class="loading">
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <span style="position:Absolute;right:10px" id="lastUpdatedBlock"></span>
+            <div id="about"><a href="#" onclick="Insight.Show('local',$('#aboutBlock').html());return false;">About</a></div>
+            <div id="resultCt">Loading...</div>
+            <div id="loading">Loading...</div>
+
+        </div>
+
+        <div id="aboutBlock" style="display:none;">
+            <h1>About Virtual CWSF for PlayBook&#8482;</h1>
+            <h2>Disclaimer</h2>
+            This app and the data presented in it is <b>not affiliated with Youth Science Canada</b>. The accuracy of the information presented by this app is not guaranteed. For authoritative results, please visit the official Virtual CWSF website.
+            <h2>There's a website, too!</h2>
+            In case you didn't know, you can get all the cool features of this app on your full-sized desktop PC at <b>cwsf.cpfx.ca</b>
+
+            <h2>Developer contact</h2>
+            Collin Fair @ <a href="mailto:cpf@cpfx.ca">cpf@cpfx.ca</a><br/>
+            <a href="https://github.com/cpfair/powervcwsf" target="_blank">Peruse this app's source on github &raquo;</a>
+        </div>
+
+    </body>
+</html>
