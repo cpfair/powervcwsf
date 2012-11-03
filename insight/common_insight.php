@@ -1,10 +1,12 @@
 <?php
-
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: text/html; charset=UTF-8");
+//ini_set('display_errors',1);
 function ArrayList($list) {
 	if (count($list)){
 		echo "<ul>";
 		foreach ($list as $item) {
-			echo "<li>&raquo; ".htmlentities(utf8_encode($item))."</li>";
+			echo "<li>&raquo; ".htmlentities(utf8_decode($item))."</li>";
 		}
 		echo "</ul>";
 	} else {
