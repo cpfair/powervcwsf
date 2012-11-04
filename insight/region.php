@@ -79,7 +79,7 @@ echo "<h1>".$RegionRecord->Name."</h1>";
 	<tr>
 		<td>
 			<div class="insightBlock" id="rStats">
-				<h1>Division stats</h1>
+				<h1>Region stats</h1>
 				<ul>
 					<li>Active since: <em><?php echo $FirstSeen;?></em></li>
 					<li>Last seen: <em><?php echo $LastSeen;?></em></li>
