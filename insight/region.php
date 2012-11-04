@@ -23,6 +23,7 @@ while ($ya=$YearAggregateRes->fetch_array()){
 }
 $FinalistCt=$YearAggregate[$RegionRecord->LastSeenYear];
 for ($yr=$RegionRecord->LastSeenYear; $yr >=$RegionRecord->FirstSeenYear ; $yr--) { 
+	if (empty($YearAggregate[$yr])) continue;
 	if ($YearAggregate[$yr]!=$FinalistCt){
 		$FinalistCt.=" (";
 		if ($YearAggregate[$yr]>$FinalistCt){
