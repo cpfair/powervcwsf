@@ -60,7 +60,7 @@ $GradesString="";
 if (!$IsQC || true){
 	$GradesString="Attended in Grade";
 	if (count($Grades)>1) $GradesString.="s";
-	$GradesString.=" ";
+	$GradesString.=" <em>";
 	for ($gidx=0;$gidx<count($Grades);$gidx++){
 		$GradesString.=$Grades[$gidx]->key;
 		if ($gidx==count($Grades)-2) {
@@ -69,6 +69,7 @@ if (!$IsQC || true){
 			$GradesString.=", ";
 		}
 	}
+	$GradesString.="</em>";
 }
 
 
@@ -85,8 +86,8 @@ echo "</div></td><td valign=\"top\"><h1>".htmlentities($ParticipantRecord->Name)
 <div class="insightBlock wide" id="pStats">
 	<h1>Stats</h1>
 	<ul>
-		<li>Total winnings: <?php echo FormatCurrency($ParticipantRecord->Winnings); if ($ParticipantRecord->Winnings!=$ParticipantRecord->UndividedWinnings){echo " (".FormatCurrency($ParticipantRecord->UndividedWinnings)." without partner split)";}?> </li>
-		<li>Times in attendence: <?php echo count($Fairs);?></li>
+		<li>Total winnings: <em><?php echo FormatCurrency($ParticipantRecord->Winnings); if ($ParticipantRecord->Winnings!=$ParticipantRecord->UndividedWinnings){echo " (".FormatCurrency($ParticipantRecord->UndividedWinnings)." without partner split)";}?></em> </li>
+		<li>Times in attendence: <em><?php echo count($Fairs);?></em></li>
 		<?php if (count($Grades)>0){?><li><?php echo $GradesString;?></li><?php } ?>
 	</ul>
 </div>

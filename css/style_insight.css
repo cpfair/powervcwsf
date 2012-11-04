@@ -21,6 +21,10 @@
 	box-shadow:0 0 10px rgba(0,0,0,0.5);
 	padding:15px;
 }
+.insightDiag em {
+	font-style:normal;
+	color:#ccc;
+}
 .insightDiag a {
 	color:#888;
 }
@@ -52,6 +56,9 @@
 	opacity:0.625;
 
 }
+.insightBlock h2 {
+	font-size:15px;
+}
 .pInsight .insightBlock {
 	width:214px;
 }
@@ -67,7 +74,34 @@
 	text-indent:-0.8em;/*magic #, should make this an image anyways*/
 	padding-left:1em;
 	margin-left:0;
+	margin-top:3px;
+	margin-bottom:3px;
 }
+
+.rInsight h1 {
+	margin-top:0;
+	margin-bottom:5px;
+}
+.rInsight table,.rInsight tr {
+	width:100%;
+	table-layout:fixed;
+}
+.rInsight table td {
+	width:100%;
+}
+.rInsight .insightBlock {
+	display:block;
+	width:auto;
+	float:none;
+}
+.rInsight .divisionBreakdown h1 {
+	background-image:url('../img/pie.png');
+}
+
+#rStats h1 {
+	background-image:url('../img/stats2_w.png');
+}
+
 .pInsight h1 {
 	margin-top:0;
 	margin-bottom:0px;
@@ -83,20 +117,20 @@
 }
 
 #pStats h1 {
-	background-image:url('img/stats2_w.png');
+	background-image:url('../img/stats2_w.png');
 }
 #pWTFStats h1 {
-	background-image:url('img/wtfstats2_w.png');
+	background-image:url('../img/wtfstats2_w.png');
 }
 #pRegions h1 {
-	background-image:url('img/region_w.png');	
+	background-image:url('../img/region_w.png');	
 }
 #pPartners h1 {
-	background-image:url('img/people_w.png');
+	background-image:url('../img/people_w.png');
 }
 #pFairs h1 {
-	background-image:url('img/fair_w.png');
+	background-image:url('../img/fair_w.png');
 }
 #pDivisions h1 {
-	background-image:url('img/division_w.png');
+	background-image:url('../img/division_w.png');
 }

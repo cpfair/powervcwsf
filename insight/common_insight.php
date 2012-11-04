@@ -6,7 +6,7 @@ function ArrayList($list) {
 	if (count($list)){
 		echo "<ul>";
 		foreach ($list as $item) {
-			echo "<li>&raquo; ".htmlentities(utf8_decode($item))."</li>";
+			echo "<li>&raquo; <em>".htmlentities(utf8_decode($item))."</em></li>";
 		}
 		echo "</ul>";
 	} else {
@@ -21,7 +21,7 @@ function ArrayListPlural($list){
 			$totalYears+=count($item->years);
 		}
 		foreach ($list as $item) {
-			echo "<li>&raquo; ".htmlentities(utf8_decode($item->key));
+			echo "<li>&raquo; <em>".htmlentities(utf8_decode($item->key))."</em>";
 			if (count($item->years)!=$totalYears)
 			{
 				//incomplete years

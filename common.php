@@ -22,3 +22,27 @@ $FairYears[2012]="Charlottetown";
 $FairYears[2013]="Lethbridge";
 
 $UpToDateYear=2012; //could pull from DB, could also just update it every year
+
+define ("CAT_CHALLENGE",1);
+define ("CAT_DIVISION",2);
+$CatagoryTypes=array(
+	'computinginformationtechnology'=>CAT_DIVISION,
+	'engineering'=>CAT_DIVISION,
+	'automotive'=>CAT_DIVISION,
+	'environmentalinnovation'=>CAT_DIVISION,
+	'biotechnology'=>CAT_DIVISION,
+	'earthenvironmentalsciences'=>CAT_DIVISION,
+	'engineeringcomputingsciences'=>CAT_DIVISION,
+	'healthsciences'=>CAT_DIVISION,
+	'lifesciences'=>CAT_DIVISION,
+	'physicalmathematicalsciences'=>CAT_DIVISION,
+	'international'=>CAT_CHALLENGE /* ??? */,
+	'discovery'=>CAT_CHALLENGE,
+	'energy'=>CAT_CHALLENGE,
+	'environment'=>CAT_CHALLENGE,
+	'health'=>CAT_CHALLENGE,
+	'information'=>CAT_CHALLENGE,
+	'innovation'=>CAT_CHALLENGE,
+	'resources'=>CAT_CHALLENGE
+	); //ditto
+

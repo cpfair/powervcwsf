@@ -144,7 +144,7 @@ Query.AppendResultsToTable=function(results){
 		}
 
 		if (res.RegionName!==null){
-			$("<span class=\"region\">").text(res.RegionName).appendTo(resultHolder).append(Query.CreateRefineButton("region",res.Region));
+			$("<span class=\"region\">").text(res.RegionName).appendTo(resultHolder).append(Query.CreateRefineButton("region",res.Region)).append(Query.CreateInsightButton("region",res.Region));
 		}
 		$("<br/>").appendTo(resultHolder);
 		/*

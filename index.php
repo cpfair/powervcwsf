@@ -32,23 +32,23 @@ header("Content-Type: text/html; charset=UTF-8");
 		<?php 
 			} 
 		?>
-		<script type="text/javascript">
+		 <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+    	<script type="text/javascript">
 			Query.Mode=<?php echo $MODE;?>;
 			$(document).ready(Query.Init);
-		</script>
-		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-16823186-2']);
+			_gaq.push(['_trackPageview']);
 
-		  var _gaq = _gaq || [];
-		  _gaq.push(['_setAccount', 'UA-16823186-2']);
-		  _gaq.push(['_trackPageview']);
-
-		  (function() {
+			(function() {
 			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		  })();
+			})();
 
 		</script>
+		
+
 		<link rel="icon" type="image/png" href="/favicon.png">
 	</head>
 	<body>
