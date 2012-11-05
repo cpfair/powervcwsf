@@ -158,11 +158,12 @@ echo "<h1>".$RegionRecord->Name."</h1>";
 	                    color: '#ccc',
 	                    softConnector:true,
 	                    style:{
-	                    	fontSize:'13px',
+	                    	fontSize:'12px',
+	                    	width:'225px'
 	                    },
 	                    connectorColor: '#aaaaaa',
 	                    formatter: function() {
-	                        return ''+ this.point.name +': '+ Math.round(this.percentage) +' %';
+	                        return ''+ this.point.name +': '+ Math.round(this.percentage) +'%';
 	                    }
 	                }
 	            }
