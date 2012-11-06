@@ -92,16 +92,16 @@ echo "<h1>".$RegionRecord->Name."</h1>";
 	<tr>
 		<td>
 			<div class="insightBlock divisionBreakdown">
-				<h1>Division breakdown <span class="small">(2005-2010)</a></h1>
-				<div id="divisionChart" class="chart" style="width: 100%; height: 300px;">
+				<h1>Challenge breakdown <span class="small">(2011-<?php echo $UpToDateYear;?>)</a></h1>
+				<div id="challengeChart" class="chart" style="width: 100%; height: 300px;">
 			</div>
 		</td>
 	</tr>
 	<tr>
 		<td>
 			<div class="insightBlock divisionBreakdown">
-				<h1>Challenge breakdown <span class="small">(2011-<?php echo $UpToDateYear;?>)</a></h1>
-				<div id="challengeChart" class="chart" style="width: 100%; height: 300px;">
+				<h1>Division breakdown <span class="small">(2005-2010)</a></h1>
+				<div id="divisionChart" class="chart" style="width: 100%; height: 300px;">
 			</div>
 		</td>
 	</tr>

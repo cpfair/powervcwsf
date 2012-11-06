@@ -33,7 +33,8 @@
 	text-align:center;
 	font-weight:bold;
 	position:relative;
-	top:120px;
+	line-height:125px;
+	height:125px;
 }
 
 .insightBlock {

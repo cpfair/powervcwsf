@@ -14,6 +14,7 @@ Insight.CreateDialog=function(){
 	$("<div class=\"insightCover\">").appendTo($("body")).hide().fadeIn(200).click(Insight.Close);
 
 	$("<div class=\"insightDiag\">").appendTo($("body")).hide().fadeIn(200).append($("<div class=\"insightLoading\">").text("Loading..."));
+	$(".insightDiag").css("top",$(window).scrollTop()+$(window).height()*0.1);
 
 };
 
@@ -23,5 +24,4 @@ Insight.Close=function(){
 
 Insight.ShowCallback=function(content){
 	$(".insightDiag").html(content);
-	$(".insightDiag").css("top",$(window).scrollTop()+$(window).height()*0.1);
 };
