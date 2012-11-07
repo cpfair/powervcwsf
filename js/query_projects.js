@@ -142,7 +142,7 @@ Query.AppendResultsToTable=function(results){
 		if (res.FinalistNames[0]===null){
 			$("<span class=\"finalistName\">").text("\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588").attr("title","This finalist's name has been removed").appendTo(participNames);
 		}
-
+		$("<span class=\"forceAllowWrap\"> </span>").appendTo(resultHolder);
 		if (res.RegionName!==null){
 			$("<span class=\"region\">").text(res.RegionName).appendTo(resultHolder).append(Query.CreateRefineButton("region",res.Region)).append(Query.CreateInsightButton("region",res.Region));
 		}
