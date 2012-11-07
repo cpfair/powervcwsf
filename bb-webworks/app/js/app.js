@@ -48,6 +48,12 @@ $(document).ready(function(){
 		}
 	},'a');
 
+	$("#resultsTable").on({
+		touchmove:function(e){
+			e.preventDefault();
+		}
+	},'div.insightButton , div.refineButton');
+
 	blackberry.app.event.onSwipeDown(function(){
 		//$("html:not(:animated),body:not(:animated)").animate({ scrollTop: 0}, 500 );
 		//$(searchFields).animate({"top":"0px"});

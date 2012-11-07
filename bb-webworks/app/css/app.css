@@ -136,6 +136,14 @@ radiogroup input {
 	margin-left:6px !important;
 }
 
+.refineButton, .insightButton {
+	background-size:100% 100%;
+	width:18px;
+	height:18px;
+	vertical-align:-15%;
+	margin-left:7px;
+}
+
 #footer {
 	background-image:url('../img/intro-bg.png');
 }
