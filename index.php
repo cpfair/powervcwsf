@@ -11,28 +11,10 @@ header("Content-Type: text/html; charset=UTF-8");
 		<meta name="Description" content="Search, filter, and sort all Canada-Wide Science Fair results.">
 		<meta name="Keywords" content="Canada Wide Science Fair, CWSF, ESPC, Results, Awards, Search, Filter, Historical, Statistics, Database, Records, Sort, Order, youth science, youth science canada">
 
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<link rel="stylesheet" type="text/css" href="css/style_results.css">
-		<link rel="stylesheet" type="text/css" href="css/style_insight.css">
-		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-		<script type="text/javascript" src="js/jquery.address-1.4.min.js"></script>
-		<script type="text/javascript" src="js/jquery.cycle.lite.js"></script>
-		<script type="text/javascript" src="js/jquery.imageloader.min.js"></script>
-		<script type="text/javascript" src="js/displayutils.js"></script>
-		<script type="text/javascript" src="js/query.js"></script>
-		<script type="text/javascript" src="js/insight.js"></script>
-		<?php
-			if ($MODE==MODE_PROJECTS){
-		?>
-			<script type="text/javascript" src="js/query_projects.js"></script>
-		<?php
-			} else {
-		?>
-			<script type="text/javascript" src="js/query_participants.js"></script>
-		<?php 
-			} 
-		?>
-		 <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+		<link rel="stylesheet" type="text/css" href="min/?g=css">
+		
+		<script type="text/javascript" src="min/?g=js,<?php echo $MODE==MODE_PROJECTS?"js-proj":"js-part";?>"></script>
+		<script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
     	<script type="text/javascript">
 			Query.Mode=<?php echo $MODE;?>;
 			$(document).ready(Query.Init);
@@ -48,11 +30,9 @@ header("Content-Type: text/html; charset=UTF-8");
 
 		</script>
 		
-
 		<link rel="icon" type="image/png" href="/favicon.png">
 	</head>
 	<body>
-		
 		<div id="searchFields">
 			<?php
 				if ($MODE==MODE_PROJECTS){
@@ -81,11 +61,9 @@ header("Content-Type: text/html; charset=UTF-8");
 			<table style="width:100%;">
 				<thead>
 				<tr id="resultsHeaders">
-
 				</tr>
 				</thead>
 				<tbody id="resultsTableBody">
-
 				</tbody>
 			</table>
 			<div id="resultsContainer">

@@ -1,4 +1,6 @@
 app/common/
+app/proj_query.html
 bin/
 pvcwsf.bar
 pvcwsf.zip
+deploy.bat
