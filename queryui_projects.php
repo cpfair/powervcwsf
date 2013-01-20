@@ -1,20 +1,12 @@
 <?php 
 require_once "common.php";
 $DivisionList=$DB->query("SELECT `Name`,`NormalizedName`,`FirstSeenYear`,`LastSeenYear` FROM `divisions`");//fixed
+include "queryui_sub_finalist.php";
 ?>
-
-<?php include "queryui_sub_finalist.php";?>
 <div class="fieldGroup right" id="projectSearchGroup">
 	<fieldset>
 		<legend>Project</legend>
-		
-
 		<table style="float:left">
-			
-			<!--<tr>
-				<td><label for="pnSearch">Proj. Number:</label></td>
-				<td><input type="text" pattern="[0-9]*" maxlength="6" id="pnSearch" name="pnSearch" style="width:4em" placeholder="0101XX"/></td>
-			</tr>-->
 			<tr>
 				<td><label for="titleSearch">Title:</label></td>
 				<td><input type="text" id="titleSearch" name="titleSearch"/></td>
@@ -23,13 +15,11 @@ $DivisionList=$DB->query("SELECT `Name`,`NormalizedName`,`FirstSeenYear`,`LastSe
 				<td><label for="synopsisSearch">Abstract:</label></td>
 				<td><input type="text" id="synopsisSearch" name="synopsisSearch"/></td>
 			</tr>
-
 			<tr>
 				<td><label for="awardsSearch">Awards:</label></td>
 				<td><input type="text" id="awardsSearch" name="awardsSearch"/></td>
 			</tr>
 		</table>
-
 		<table style="margin-left:15px;float:left;">
 			<tr>
 				<td><label for="yearSearch">Year:</label></td>
@@ -67,7 +57,5 @@ $DivisionList=$DB->query("SELECT `Name`,`NormalizedName`,`FirstSeenYear`,`LastSe
 				</td>
 			</tr>
 		</table>
-		
 	</fieldset>
-
 </div>

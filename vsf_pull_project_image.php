@@ -1,6 +1,8 @@
 <?php
+//this file is only called if the file doesn't already exist in imgcache/ - hence no cacheing logic
 error_reporting(E_ALL);
 
+//borrowed this function from... somewhere
 function smart_resize_image( $file, $width = 0, $height = 0, $proportional = false, $output = 'file', $delete_original = true, $use_linux_commands = false )
     {
         if ( $height <= 0 && $width <= 0 ) {

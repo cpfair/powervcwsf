@@ -4,7 +4,7 @@ class QueryBuilder {
 	public $SQLCount=true;
 
 	protected $Table=null;
-	protected $IgnoreParams=array("sortasc","sortdesc","mode","page","debug","pagesz");
+	protected $IgnoreParams=array("sortasc","sortdesc","mode","page","debug","pagesz"); //these won't be mistaken for general query params
 	protected $SplitFields=array();
 	protected $OrderClauses=array();
 	protected $WhereClauses=array();
@@ -13,7 +13,6 @@ class QueryBuilder {
 
 	private $StartIndex=0;
 	private $PageLength=50;
-
 
 	private function PopulateOrderClausesFromParam($string,$order){
 		global $DB;
@@ -36,14 +35,13 @@ class QueryBuilder {
 			$searchTerms=preg_split("!\s?&&\s?!",$pvalue);//allow for spaces around the && since that looks nice
 			
 			//format key so thi's.that turns into `thi\'s`.`that`
-
 			$searchKey=preg_replace("/([^_]+)/","`$1`",$DB->real_escape_string($pkey));
 			$searchKey=preg_replace("/_/",".",$searchKey);
 			
 			foreach ($searchTerms as $term){
 				$term=$DB->real_escape_string($term);
 
-				if (isset($this->SplitFields[$pkey])){
+				if (isset($this->SplitFields[$pkey])){ //exists for fields like finalistA and finalistB
 					$splitFields=array();
 					foreach ($this->SplitFields[$pkey] as $resolvedField){
 						array_push($splitFields,$resolvedField." LIKE '%$term%'");
@@ -53,19 +51,17 @@ class QueryBuilder {
 					array_push($this->WhereClauses,"$searchKey LIKE '%$term%'");
 				}
 			}
-			
-
 		}
 	}
 
 	function SetupOtherClauses(){
 		//...
 	}
-	function Compile($fastcount=false){
+	function Compile($countOnly=false){ 
 		$query="SELECT ";
-		if ($this->SQLCount && !$fastcount) $query.="SQL_CALC_FOUND_ROWS ";
+		if ($this->SQLCount && !$countOnly) $query.="SQL_CALC_FOUND_ROWS ";
 
-		if (!$fastcount){
+		if (!$countOnly){
 			$query.=join(",",$this->SelectClauses);
 		} else {
 			$query.="COUNT(*) as `Count`";
@@ -73,7 +69,7 @@ class QueryBuilder {
 		$query.=" FROM `".$this->Table."`";
 		$query.=join(" ",$this->JoinClauses);
 		if (count($this->WhereClauses)>0) $query.=" WHERE ".join(" AND ",$this->WhereClauses);
-		if (count($this->OrderClauses)>0 && !$fastcount) $query.=" ORDER BY ".join(",",$this->OrderClauses);
+		if (count($this->OrderClauses)>0 && !$countOnly) $query.=" ORDER BY ".join(",",$this->OrderClauses);
 
 		$query.=" LIMIT ".$this->StartIndex.",".$this->PageLength;
 
@@ -81,20 +77,15 @@ class QueryBuilder {
 		return $query;
 	}
 	function Prepare($params){
-
 		$this->BuildOrderClauses($params);
 		$this->BuildWhereClauses($params);
 		$this->SetupOtherClauses();
 
 		//pagination
-		
 		$page=0;
 		if (isset($params["pagesz"])) $this->PageLength=min(50,intval($params["pagesz"]));
 		if (isset($params["page"])) $page=intval($params["page"]);
 		$this->StartIndex=$page*$this->PageLength;
-		
-	
-		
 	}
 
 	function PostProcessRow($row){
@@ -112,12 +103,9 @@ class ProjectsQueryBuilder extends QueryBuilder {
 		$this->Table="projects";
 		$this->SplitFields["Finalists"]=array("`PartA`.`Name`","`PartB`.`Name`");
 		$this->SplitFields["Divisions"]=array("`DivA`.`NormalizedName`","`DivB`.`NormalizedName`");
-		
-
 	}
 
 	function SetupOtherClauses(){
-		
 		$this->JoinClauses[]="LEFT JOIN `participants` PartA ON `PartA`.`NormalizedName`=`projects`.`ParticipantA`";
 		$this->JoinClauses[]="LEFT JOIN `participants` PartB ON `PartB`.`NormalizedName`=`projects`.`ParticipantB`";
 		$this->JoinClauses[]="LEFT JOIN `regions` ON `regions`.`NormalizedName`=`projects`.`Region`";

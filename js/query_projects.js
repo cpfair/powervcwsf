@@ -48,39 +48,6 @@ Query.AppendResultsToTable=function(results){
 	var resbase=Query.Platform.ResourceBase();
 	for (var i = 0; i < results.length; i++) {
 		var res=results[i];
-		/*var row=$("<tr>").appendTo($("#resultsTableBody"));
-		Query.AppendBasicCell(row,res.Year);
-		Query.AppendBasicCell(row,DisplayUtils.HighlightTerms(res.Name,"Name"),true).css("font-weight","bold");
-		Query.AppendBasicCell(row,FormatMultiple(res.FinalistAName,res.FinalistBName));
-		
-		
-		Query.AppendRefineCell(row,res.RegionName,"region",res.Region).addClass("nowrap");
-		//Query.AppendRefineCell(row,"<img class=\"provImg\" src=\"img/provterr/"+res.ProvTerr+".gif\" alt=\""+res.ProvTerr+"\"/>","provterr",res.ProvTerr,true).addClass("center");
-		Query.AppendRefineCell(row,res.ProvTerr,"provterr",res.ProvTerr,true).addClass("center nowrap");
-		Query.AppendRefineCell(row,DisplayUtils.DivisionDisplay(res.Division),"division",res.Division).addClass("nowrap");
-		Query.AppendRefineCell(row,DisplayUtils.AgeCatDisplay(res.AgeCat),"agecat",res.AgeCat).addClass("center nowrap");
-
-		Query.AppendBasicCell(row,DisplayUtils.FormatCurrency(res.CashAwardsValue),true).addClass("center");
-		Query.AppendBasicCell(row,DisplayUtils.FormatCurrency(res.ScholarshipAwardsValue),true).addClass("center");
-		Query.AppendBasicCell(row,DisplayUtils.FormatCurrency(res.OtherAwardsValue),true).addClass("center");
-
-	
-
-		Query.AppendBasicCell(row,DisplayUtils.FormatCurrency(res.TotalAwardsValue),true).addClass("center");
-
-		
-
-		var awards=$.parseJSON(res.AwardsData);
-		var awardsRow;
-		if (awards.length!==0){
-			awardsRow=Query.AppendTruncatedRow(DisplayUtils.AwardsSummary(res.AwardsData),true);
-		}
-
-		var synrow=Query.AppendTruncatedRow(res.Synopsis);
-		$("td",synrow).addClass("endGroup synopsisText");
-
-		if (alt) {$(row).addClass("alt");$(synrow).addClass("alt");if (awardsRow!==undefined){awardsRow.addClass("alt");}}
-		alt=!alt;*/
 
 		var resultHolder=$("<div class=\"result\">").appendTo($("#resultsContainer"));
 

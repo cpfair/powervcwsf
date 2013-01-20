@@ -6,14 +6,13 @@
 	top:0;
 	right:0;
 	bottom:0;
-
 }
+
 .insightDiag {
 	z-index:1000;
 	color:#aaa;
 	position:absolute;
 	top:10%;
-	
 	width:800px;
 	left:50%;
 	margin-left:-400px;
@@ -21,13 +20,16 @@
 	box-shadow:0 0 10px rgba(0,0,0,0.5);
 	padding:15px;
 }
+
 .insightDiag em {
 	font-style:normal;
 	color:#ccc;
 }
+
 .insightDiag a {
 	color:#888;
 }
+
 .insightLoading {
 	font-size:36px;
 	text-align:center;
@@ -49,52 +51,58 @@
 	font-size:20px;
 	font-weight:normal;
 }
+
 .insightBlock h1 {
 	padding-left:18px;
 	background-position:left center;
 	background-repeat:no-repeat;
 	color:#fff;
 	opacity:0.625;
-
 }
+
 .insightBlock h2 {
 	font-size:15px;
 }
+
 .pInsight .insightBlock {
 	width:214px;
 }
+
 .pInsight .insightBlock.wide {
 	width:677px;
 }
+
 .insightBlock h1 {
 	font-size:15px;
 }
+
 .insightBlock ul {
 	list-style: none;
-	margin-right:0;
 	text-indent:-0.8em;/*magic #, should make this an image anyways*/
+	margin:3px 0 3px 3px;
 	padding-left:1em;
-	margin-left:0;
-	margin-top:3px;
-	margin-bottom:3px;
 }
 
 .rInsight h1 {
 	margin-top:0;
 	margin-bottom:5px;
 }
+
 .rInsight table,.rInsight tr {
 	width:100%;
 	table-layout:fixed;
 }
+
 .rInsight table td {
 	width:100%;
 }
+
 .rInsight .insightBlock {
 	display:block;
 	width:auto;
 	float:none;
 }
+
 .rInsight .divisionBreakdown h1 {
 	background-image:url('../img/pie.png');
 }
@@ -105,14 +113,15 @@
 
 .pInsight h1 {
 	margin-top:0;
-	margin-bottom:0px;
+	margin-bottom:0;
 }
+
 .pInsight img {
 	margin-right:5px;
 	margin-bottom:5px;
 	display:inline-block;
-	float:left;
 }
+
 .pInsightPhotos {
 	width:100px;
 }
@@ -120,18 +129,23 @@
 #pStats h1 {
 	background-image:url('../img/stats2_w.png');
 }
+
 #pWTFStats h1 {
 	background-image:url('../img/wtfstats2_w.png');
 }
+
 #pRegions h1 {
 	background-image:url('../img/region_w.png');	
 }
+
 #pPartners h1 {
 	background-image:url('../img/people_w.png');
 }
+
 #pFairs h1 {
 	background-image:url('../img/fair_w.png');
 }
+
 #pDivisions h1 {
 	background-image:url('../img/division_w.png');
 }

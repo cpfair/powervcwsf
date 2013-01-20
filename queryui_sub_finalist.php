@@ -1,29 +1,24 @@
 <?php
 require_once "common.php";
 $RegionList=$DB->query("SELECT `regions`.`Name`,`regions`.`NormalizedName`,`regions`.`ProvTerr` FROM `regions`");
-
 ?>
 <div class="fieldGroup" id="participantSearchGroup">
 	<fieldset>
 		<legend>Finalist</legend>
 		<table>
-
 			<tr>
 				<td><label for="provSelect">Prov/Terr:</label></td>
 				<td>
 					<select name="provSelect" id="provSelect">
 						<option value="">Any</option>
 						<option value="AB">Alberta</option>
-						
 						<option value="BC">British Columbia</option>
 						<option value="MB">Manitoba</option>
-
 						<option value="NB">New Brunswick</option>
 						<option value="NL">Newfoundland</option>
 						<option value="NS">Nova Scotia</option>
 						<option value="NT">Northwest Territories</option>
 						<option value="NU">Nunavut</option>
-						
 						<option value="ON">Ontario</option>
 						<option value="PE">Prince Edward Island</option>
 						<option value="QC">Qu&eacute;bec</option>

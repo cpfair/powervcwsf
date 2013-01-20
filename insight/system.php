@@ -10,5 +10,3 @@ No offence to James &amp; co. at <a href="http://www.lightbox.ca/">Lightbox Tech
 <h2>Contact</h2>
 Collin @ <a href="mailto:cpf@cpfx.ca">cpf@cpfx.ca</a><br/>
 <a href="https://github.com/cpfair/powervcwsf" target="_blank">github &raquo;</a>
-
-
