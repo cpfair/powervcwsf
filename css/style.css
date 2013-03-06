@@ -88,6 +88,7 @@ fieldset legend {
 #searchFields radiogroup input {
 	color:#a6a6a6;
 	display:inline-block;
+	float:left;
 	font-size:17px;
 	border-left:none;
 	border-right:1px solid #3a3a3a;
