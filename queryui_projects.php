@@ -35,12 +35,13 @@ include "queryui_sub_finalist.php";
 				</td>
 			<tr>
 				<td><label for="ageSearch">Age:</label></td>
-				<td>
+				<td class="positionClearShortcut">
 					<radiogroup id="ageSearch"><!-- might as well get the making-up-tags ball rolling here -->
 						<input type="button" value="Junior" title="Junior (Grades 7-8)" radiovalue="1"/>
 						<input type="button" value="Inter" title="Intermediate (Grades 9-10)" radiovalue="2"/>
 						<input type="button" value="Senior" title="Senior (Grades 11-12)" radiovalue="3"/>
 					</radiogroup>
+
 				</td>
 			</tr>
 			<tr style="display:none">

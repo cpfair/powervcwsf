@@ -27,6 +27,7 @@ fieldset {
 	color:#a6a6a6;
 	text-shadow:1px 1px 0 rgba(0,0,0,0.4);
 	box-shadow:0 0 5px rgba(0,0,0,0.2);
+	height:127px;
 }
 
 fieldset legend {
@@ -57,6 +58,7 @@ fieldset legend {
 #searchFields td {
 	vertical-align:middle;
 	position:relative;
+	white-space:nowrap;
 }
 
 #searchFields label {
@@ -72,6 +74,8 @@ fieldset legend {
 	background-color:#424242;
 	border:1px solid #3a3a3a;
 	color:#eee;
+	margin:2px;
+	padding:1px 0;
 }
 
 #searchFields input:hover,#searchFields select:hover {
@@ -94,11 +98,13 @@ fieldset legend {
 	border-right:1px solid #3a3a3a;
 	margin-left:0;
 	margin-right:0;
+	padding:0 6px;
 	cursor:pointer;
 }
 
 #searchFields radiogroup input:last-child {
 	border-right:1px solid #3a3a3a;
+	margin-right:2px;
 }
 
 #searchFields radiogroup input:first-child {
@@ -121,21 +127,18 @@ fieldset legend {
 }
 
 #searchFields .clearShortcut {
-	font-weight:bold;
-	position:absolute;
-	display:inline-block;
-	text-shadow:none;
-	color:#222;
-	margin-left:5px;
-	cursor:pointer;
+	background-image:url('../img/clear2.png');
 	width:16px;
 	height:16px;
-	overflow:hidden;
-	background-image:url('../img/clear2.png');
 	text-indent:-999px;
+	overflow: hidden;
+	vertical-align: 0;
 	opacity:0.2;
-	top:50%;
-	margin-top:-8px;
+	cursor:pointer;
+}
+#searchFields .positionClearShortcut .clearShortcut {
+	position:relative;
+	top:5px;
 }
 
 #searchFields .clearShortcut:hover {
