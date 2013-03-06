@@ -54,7 +54,7 @@ header("Content-Type: text/html; charset=UTF-8");
 			</p>
 			<h2>Update:</h2>
 			<p>
-				As of August 2012, there is a bug in the official CWSF results system that returns incorrect divisions for some projects. Because of this, I have temporarily removed the ability to search by project division. 
+				As of March 2013, there is a bug in the official CWSF results system that returns incorrect divisions for some projects. Because of this, I have temporarily removed the ability to search by project division. 
 			</p>
 		</div>
 		<div id="resultsTable">
