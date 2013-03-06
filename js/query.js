@@ -208,7 +208,7 @@ Query.BuildFromAddress=function(passParams){
 			val = passParams[q.slug];
 		}
 		if (val!==undefined) val=val.replace(/%20/g," ");
-		if ($(q.field).val()!=val) {$(q.field).val(val);}
+		if ($(q.field).val()!=val) {$(q.field).val(val===undefined?"":val);}
 		Query.ShowHideClearShortcut(q.field);
 		Query.UpdateSelectStyling(q.field);
 		if (typeof q.translator!="undefined" && q.translator!==null){
