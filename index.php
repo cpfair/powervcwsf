@@ -47,7 +47,7 @@ header("Content-Type: text/html; charset=UTF-8");
 		<div id="introduction">
 			<h1>Welcome to Power VCWSF</h1>
 			<p>
-				Here, you can search every <a href="http://cwsf.youthsciece.ca" target="_blank">Canada-Wide Science Fair</a> project from 2005 to today. You can also sort projects by nearly anything, find all the projects that won a specific award, view a participant's science fair history, and more.
+				Here, you can search every <a href="http://cwsf.youthscience.ca" target="_blank">Canada-Wide Science Fair</a> project from 2005 to today. You can also sort projects by nearly anything, find all the projects that won a specific award, view a participant's science fair history, and more.
 			</p>
 			<p>
 				These results are derived from <a href="https://secure.youthscience.ca/virtualcwsf/" target="_blank">the official CWSF results system</a>.
