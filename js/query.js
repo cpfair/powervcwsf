@@ -183,8 +183,7 @@ Query.Build=function(){
 		var val=$(q.field).val();
 		q.value=val;
 		if (Query.Platform.AddressProxy){
-			$.address.parameter(q.slug,val.replace(/\s/g,"%20"));//spaces=don't play well
-		} else {
+			$.address.parameter(q.slug,encodeURIComponent(val));
 			Query.ParamStore[q.slug]=val;
 		}
 		
@@ -207,7 +206,7 @@ Query.BuildFromAddress=function(passParams){
 		else {
 			val = passParams[q.slug];
 		}
-		if (val!==undefined) val=val.replace(/%20/g," ");
+		if (val!==undefined) val=decodeURIComponent(val);
 		if ($(q.field).val()!=val) {$(q.field).val(val===undefined?"":val);}
 		Query.ShowHideClearShortcut(q.field);
 		Query.UpdateSelectStyling(q.field);

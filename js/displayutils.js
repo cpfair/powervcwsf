@@ -76,7 +76,7 @@ DisplayUtils.HighlightTerms=function(string, queryparam){
 	var val=Query.CurrentValues[queryparam].split('&&');
 		
 	for (var k in val){
-		val[k]=RegExp.escape(val[k]);
+		val[k]=RegExp.escape(val[k].replace(/^\s+|\s+$/g, ''));
 	}
 	string=htmlEscape(string);//since elsewhere I use jQuery's .text method to avoid this issue
 	string=string.replace(new RegExp("("+val.join("|")+")","ig"),"<span class=\"searchHighlight\">$1</span>");
