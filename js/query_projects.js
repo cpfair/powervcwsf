@@ -114,14 +114,14 @@ Query.AppendResultsToTable=function(results){
 			$("<span class=\"region\">").text(res.RegionName).appendTo(resultHolder).append(Query.CreateRefineButton("region",res.Region)).append(Query.CreateInsightButton("region",res.Region));
 		}
 		$("<br/>").appendTo(resultHolder);
-		/*
+		
 		for (var di = 0; di < res.Divisions.length; di++) {
 			if (res.Divisions[di]===null) continue;
 			
 			$("<span class=\"division iconed\">").text(res.DivisionNames[di]).appendTo(resultHolder).append(Query.CreateRefineButton("division",res.Divisions[di]));
 		}
 		$("<span> &mdash; </span>").appendTo(resultHolder);
-		*/
+		
 		
 		$("<span class=\"ageCat\">").text(DisplayUtils.AgeCatDisplay(res.AgeCat)).appendTo(resultHolder).append(Query.CreateRefineButton("age",res.AgeCat));
 

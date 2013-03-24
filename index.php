@@ -52,9 +52,9 @@ header("Content-Type: text/html; charset=UTF-8");
 			<p>
 				These results are derived from <a href="https://secure.youthscience.ca/virtualcwsf/" target="_blank">the official CWSF results system</a>.
 			</p>
-			<h2>Update:</h2>
+						<h2>Update:</h2>
 			<p>
-				As of March 2013, there is a bug in the official CWSF results system that returns incorrect divisions for some projects. Because of this, I have temporarily removed the ability to search by project division. 
+				Thanks to <a href="http://layeh.com/" target="_blank">Tim Cooper</a>, you can now search by divisions and challenges!
 			</p>
 		</div>
 		<div id="resultsTable">
@@ -70,7 +70,7 @@ header("Content-Type: text/html; charset=UTF-8");
 			</div>
 		</div>
 		<div id="footer">
-			<div id="about"><a href="#" onclick="this.endpoint='system';Query.InsightButton.call(this);return false;">About PowerVCWSF</a> | <a href="mailto:cpf@cpfx.ca">Report an issue</a> | Data last updated May 18 2012</div>
+			<div id="about"><a href="#" onclick="this.endpoint='system';Query.InsightButton.call(this);return false;">About PowerVCWSF</a> | <a href="mailto:cpf@cpfx.ca">Report an issue</a> | Data last updated March 24 2013</div>
 			<div id="resultCt">Loading...</div>
 			<div id="loading">Loading...</div>
 			<div id="attrib">Please note that these data and calculations are not warranted for accuracy.<br/>This system is not affiliated with Youth Science Canada.</div>

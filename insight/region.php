@@ -105,7 +105,6 @@ foreach ($ChallengeABAggregate as $id => $count) {
 			</td>
 		</tr>
 	</table>
-	<b>Note about division stats:</b> Currently the YSC results system is returning incorrect divisions for many projects, and not even the magic of pie charts can fix this. You have been warned.
 </div>
 
 <script type="text/javascript">

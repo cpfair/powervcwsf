@@ -44,4 +44,10 @@ $CatagoryTypes=array(
 	'innovation'=>CAT_CHALLENGE,
 	'resources'=>CAT_CHALLENGE
 	); //ditto
+$CatagoryShortNames = array(
+	"computinginformationtechnology" => "Computing & I.T.",
+	"engineeringcomputingsciences" => "Engineering & Comp. Sci.",
+	"earthenvironmentalsciences" => "Earth and Enviro. Sci.",
+	"physicalmathematicalsciences" => "Physical & Math Sci."
+	);
 

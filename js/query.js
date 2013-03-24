@@ -491,12 +491,22 @@ Query.FilterDivisions=function(){
 	if (Divisions.length===0) return;
 	var prevValue=$("#divisionSearch").val();//just realized I changed from XYZselect to XYZsearch somewhere along the way :\
 	
-	var curProv=parseInt($("#yearSearch").val(),10);
-	console.log(curProv);
+	var curYear=parseInt($("#yearSearch").val(),10);
+	if (isNaN(curYear)) {
+		$("#divisionSearchRow").hide();
+		return;
+	} else {
+		$("#divisionSearchRow").show();
+	}
+	if (curYear>=2011) {
+		$("label[for=divisionSearch]").text("Challenge:");
+	} else {
+		$("label[for=divisionSearch]").text("Division:");
+	}
 	$("#divisionSearch option:not(:first)").remove();
 	var persistValue=false;
 	for (var i = 0; i < Divisions.length; i++) {
-		if ((Divisions[i].start<=curProv && Divisions[i].end>=curProv) || isNaN(curProv)){
+		if ((Divisions[i].start<=curYear && Divisions[i].end>=curYear) || isNaN(curYear)){
 			$("<option>").text(Divisions[i].display).attr("value",Divisions[i].value).appendTo("#divisionSearch");
 			if (Divisions[i].value==prevValue){
 				persistValue=true;

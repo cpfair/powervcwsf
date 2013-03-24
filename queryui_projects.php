@@ -44,14 +44,25 @@ include "queryui_sub_finalist.php";
 
 				</td>
 			</tr>
-			<tr style="display:none">
+			<tr style="display:none;" id="divisionSearchRow">
 				<td><label for="divisionSearch">Division:</label></td>
 				<td>
 					<select name="divisionSearch" id="divisionSearch">
 						<option value="">Any</option>
 						<?php
 						while ($div=$DivisionList->fetch_object()){
-							echo "<option value=\"".$div->NormalizedName."\" startYear=\"".$div->FirstSeenYear."\" endYear=\"".$div->LastSeenYear."\">".$div->Name."</option>";
+							if ($div->FirstSeenYear == $div->LastSeenYear) {
+								$rangeStr = $div->FirstSeenYear;
+							} else {
+								$rangeStr = "'".str_pad(($div->FirstSeenYear-2000),2, '0', STR_PAD_LEFT) . "-";
+								if ($div->LastSeenYear == $UpToDateYear){
+									$rangeStr .= "today";
+								} else {
+									$rangeStr .= "'" . str_pad(($div->LastSeenYear-2000),2, '0', STR_PAD_LEFT);
+								}
+							}
+							
+							echo "<option value=\"".$div->NormalizedName."\" startYear=\"".$div->FirstSeenYear."\" endYear=\"".$div->LastSeenYear."\">".(array_key_exists($div->NormalizedName, $CatagoryShortNames)?$CatagoryShortNames[$div->NormalizedName]: $div->Name)."</option>";
 						}
 						?>
 					</select>
