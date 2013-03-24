@@ -184,8 +184,9 @@ Query.Build=function(){
 		q.value=val;
 		if (Query.Platform.AddressProxy){
 			$.address.parameter(q.slug,encodeURIComponent(val));
-			Query.ParamStore[q.slug]=val;
+			
 		}
+		Query.ParamStore[q.slug]=val;
 		
 	}
 	if (!Query.Platform.AddressProxy){
@@ -207,6 +208,7 @@ Query.BuildFromAddress=function(passParams){
 			val = passParams[q.slug];
 		}
 		if (val!==undefined) val=decodeURIComponent(val);
+
 		if ($(q.field).val()!=val) {$(q.field).val(val===undefined?"":val);}
 		Query.ShowHideClearShortcut(q.field);
 		Query.UpdateSelectStyling(q.field);

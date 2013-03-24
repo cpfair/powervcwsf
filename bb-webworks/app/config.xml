@@ -9,8 +9,7 @@
    <content src="index.html"/>
    <authorId>gYAAgBVsG3zQfd7BOw6MISxtKYk</authorId>
    <icon src="img/icon.png" />
-   <rim:loadingScreen foregroundImage="img/splash.png" backgroundImage="img/splash-bg.png"
-    onFirstLaunch="true"/>
+   <rim:loadingScreen foregroundImage="img/splash.png" backgroundImage="img/splash-bg.png" />
    <rim:orientation mode="landscape"/>
  	<feature id="blackberry.app" required="true" version="1.0.0.0"/>
 	<feature id="blackberry.app.event" required="true" version="1.0.0.0"/>

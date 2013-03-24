@@ -34,7 +34,8 @@ body {
 	right:0;
 	top:0;
 	bottom:0;
-	visibility: hidden
+	visibility: hidden;
+	background-color:#eaeaea;
 }
 
 #splash {
@@ -145,6 +146,7 @@ radiogroup input {
 }
 
 #footer {
+	visibility: hidden;
 	background-image:url('../img/intro-bg.png');
 }
 

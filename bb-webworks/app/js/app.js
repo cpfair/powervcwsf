@@ -86,9 +86,11 @@ $(document).ready(function(){
 });
 
 function hideSplash(){
-	$("#bodyWrap").css("visibility","visible");
+	$("#bodyWrap, #footer").css("visibility","visible");
 	$("#splash").hide();
+	$("html").css("background-color", "#eaeaea");
 	$("body").css("overflow-y","auto");
+
 }
 
 Query.FloatSearchFields=function(){
