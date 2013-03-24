@@ -37,7 +37,7 @@ $RegionList=$DB->query("SELECT `regions`.`Name`,`regions`.`NormalizedName`,`regi
 							if ($display==""){
 								$display="Unknown";//hax
 							}
-							echo "<option value=\"".$region->NormalizedName."\" province=\"".$region->ProvTerr."\">".htmlentities(utf8_decode($display))."</option>";
+							echo "<option value=\"".$region->NormalizedName."\" province=\"".$region->ProvTerr."\">".htmlentities($display)."</option>";
 						}
 					?>
 				</select></td>
