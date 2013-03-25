@@ -62,7 +62,7 @@ include "queryui_sub_finalist.php";
 								}
 							}
 							
-							echo "<option value=\"".$div->NormalizedName."\" startYear=\"".$div->FirstSeenYear."\" endYear=\"".$div->LastSeenYear."\">".(array_key_exists($div->NormalizedName, $CatagoryShortNames)?$CatagoryShortNames[$div->NormalizedName]: $div->Name)."</option>";
+							echo "<option value=\"".$div->NormalizedName."\" startYear=\"".$div->FirstSeenYear."\" endYear=\"".$div->LastSeenYear."\">".(array_key_exists($div->NormalizedName, $CategoryShortNames)?$CategoryShortNames[$div->NormalizedName]: $div->Name)."</option>";
 						}
 						?>
 					</select>

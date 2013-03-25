@@ -25,7 +25,7 @@ $UpToDateYear=2012; //could pull from DB, could also just update it every year
 
 define ("CAT_CHALLENGE",1);
 define ("CAT_DIVISION",2);
-$CatagoryTypes=array(
+$CategoryTypes=array(
 	'computinginformationtechnology'=>CAT_DIVISION,
 	'engineering'=>CAT_DIVISION,
 	'automotive'=>CAT_DIVISION,
@@ -44,11 +44,11 @@ $CatagoryTypes=array(
 	'information'=>CAT_CHALLENGE,
 	'innovation'=>CAT_CHALLENGE,
 	'resources'=>CAT_CHALLENGE
-	); //ditto
-$CatagoryShortNames = array(
+	);
+
+$CategoryShortNames = array(
 	"computinginformationtechnology" => "Computing & I.T.",
 	"engineeringcomputingsciences" => "Engineering & Comp. Sci.",
 	"earthenvironmentalsciences" => "Earth and Enviro. Sci.",
 	"physicalmathematicalsciences" => "Physical & Math Sci."
 	);
-
