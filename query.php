@@ -4,6 +4,8 @@ header("Access-Control-Allow-Origin: *");
 include "common.php";
 include "query_build.php";
 
+if (@$_REQUEST["projects_ProvTerr"] == "YK") $_REQUEST["projects_ProvTerr"]  = "YT";
+
 $qb=new ProjectsQueryBuilder();
 $qb->Prepare($_REQUEST);
 $query=$qb->Compile(false);

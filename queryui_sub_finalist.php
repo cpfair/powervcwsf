@@ -23,7 +23,7 @@ $RegionList=$DB->query("SELECT `regions`.`Name`,`regions`.`NormalizedName`,`regi
 						<option value="PE">Prince Edward Island</option>
 						<option value="QC">Qu&eacute;bec</option>
 						<option value="SK">Saskatchewan</option>
-						<option value="YK">Yukon</option>
+						<option value="YT">Yukon</option>
 					</select>
 				</td>
 			</tr>
