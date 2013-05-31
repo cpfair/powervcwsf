@@ -24,14 +24,14 @@ $Divisions=array();
 $Grades=array();
 while ($row=$ProjectsQ->fetch_object()){
 	$Projects[]=$row;
-	
+
 	ListUtils::AddPossiblyPluralItem($Regions,$row->RegionName, $row->Year);
 	if ($row->FinalistAName!=null && $row->FinalistAName!=$ParticipantRecord->Name) ListUtils::AddPossiblyPluralItem($Partners,$row->FinalistAName,$row->Year);
 	if ($row->FinalistBName!=null && $row->FinalistBName!=$ParticipantRecord->Name) ListUtils::AddPossiblyPluralItem($Partners,$row->FinalistBName,$row->Year);
 	ListUtils::AddPossiblyPluralItem($Fairs, $FairYears[$row->Year], $row->Year);
 	if ($row->DivisionAName!=null) ListUtils::AddPossiblyPluralItem($Divisions,$row->DivisionAName,$row->Year);
 	if ($row->DivisionBName!=null) ListUtils::AddPossiblyPluralItem($Divisions, $row->DivisionBName, $row->Year);
-	if ($ParticipantRecord->GradeAnchor!=null) ListUtils::AddPossiblyPluralItem($Grades,$row->Year-$ParticipantRecord->GradeAnchor, $row->Year);
+	if ($ParticipantRecord->GradeAnchor!=0) ListUtils::AddPossiblyPluralItem($Grades,$row->Year-$ParticipantRecord->GradeAnchor, $row->Year);
 
 	if ($row->ProvTerr=="QC") $IsQC=true;
 }
