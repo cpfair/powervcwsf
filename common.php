@@ -20,8 +20,9 @@ $FairYears[2010]="Peterborough";
 $FairYears[2011]="Toronto";
 $FairYears[2012]="Charlottetown";
 $FairYears[2013]="Lethbridge";
+$FairYears[2014]="Windsor";
 
-$UpToDateYear=2012; //could pull from DB, could also just update it every year
+$UpToDateYear=2013; //could pull from DB, could also just update it every year
 
 define ("CAT_CHALLENGE",1);
 define ("CAT_DIVISION",2);
