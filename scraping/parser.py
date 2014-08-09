@@ -131,6 +131,8 @@ class AwardsParser:
                     if keyword in keyword_text:
                         award.Type = type
                         break
+            if not award.Value and award.Type == AwardType.Cash:
+                award.Type = AwardType.Other # It's not cash if it has no $ value
             awards.append(award)
 
         return awards
