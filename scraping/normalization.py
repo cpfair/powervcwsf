@@ -1,2 +1,4 @@
+import re
+
 def normalize(str):
-	return str
+	return re.sub("[^a-z]", "", str.lower())

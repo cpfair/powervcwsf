@@ -5,6 +5,8 @@ from region import Region
 from divisions import Divisions
 from provterrs import ProvTerrs
 from award import Award, AwardType
+from agecats import AgeCats
+from normalization import normalize
 
 import os
 import re
@@ -25,6 +27,7 @@ class Parser:
         self._divisions = Divisions()
         self._provterrs = ProvTerrs()
         self._awardsParser = AwardsParser()
+        self._agecats = AgeCats()
     def Parse(self, proj_pages_dirs):
         # Later takes precedence in this list
         proj_pages = {}
@@ -39,12 +42,14 @@ class Parser:
         print("Finished with\n\t%d projects\n\t%d finalists\n\t%d participants\n\t%d regions" % (len(self._projects), len(self._finalists), len(self._participants), len(self._regions.keys())))
 
     def _parse_page(self, pid, contents):
+        contents = contents.encode("utf-8").decode("latin-1")
         logger.info(pid)
         project = Project(
             pid=pid,
             name=re.search("<hr /><b>([^<]+)</b>", contents).group(1),
             synopsis=re.search("<td valign=\"top\">Abstract:</td><td>(.+?)</td>", contents).group(1),
-            year=int(re.search("CWSF (\d\d\d\d)", contents).group(1))
+            year=int(re.search("CWSF (\d\d\d\d)", contents).group(1)),
+            agecat=self._agecats.Find(re.search("<td>Category:</td><td>([^<]+)</td>", contents).group(1))
         )
         self._projects.append(project)
 
@@ -64,6 +69,9 @@ class Parser:
             finalist.Participant = self._resolve_participant(finalist)
             project.Finalists.append(finalist)
 
+        if len(project.Finalists) not in [1,2]:
+            raise "Invalid number of finalists"
+
         divisions_names = re.finditer("<td>(Challenge|Division):</td><td>(?P<division>[^<]+)</td>", contents)
         for div_name_match in divisions_names:
             div = self._divisions.Find(div_name_match.group("division"))
@@ -82,7 +90,7 @@ class Parser:
             logger.debug("\t\t%s" % str(award))
 
     def _resolve_participant(self, finalist):
-        search_name = self._normalize_name(finalist.Name)
+        search_name = normalize(finalist.Name)
         if finalist.Name in self._name_exceptions:
             search_name = self._name_exceptions[finalist.Name]
 
@@ -92,7 +100,6 @@ class Parser:
                 return part
 
         new_participant = Participant(finalist)
-        new_participant.NormalizedName = search_name
         self._participants.append(new_participant)
         return new_participant
 
@@ -100,9 +107,6 @@ class Parser:
         if name not in self._regions:
             self._regions[name] = Region(name)
         return self._regions[name]
-
-    def _normalize_name(self, name):
-        return name
 
 class AwardsParser:
     def __init__(self):

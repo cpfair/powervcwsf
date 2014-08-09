@@ -3,6 +3,7 @@ class Finalist:
 		self.Name = name
 		self.Participant = participant
 		self.Project = project
+		self.Grade = None
 
 	@property
 	def Year(self):
