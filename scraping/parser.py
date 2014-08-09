@@ -43,6 +43,8 @@ class Parser:
 
     def _parse_page(self, pid, contents):
         contents = contents.encode("utf-8").decode("latin-1")
+        if "Project ID missing" in contents or "Invalid project" in contents:
+            return
         logger.info(pid)
         project = Project(
             pid=pid,
@@ -57,11 +59,20 @@ class Parser:
         if provterrcodematch:
             project.ProvTerr = self._provterrs.FindByCode(provterrcodematch.group(2))
 
-        project.Region = self._resolve_region(re.search("<td>Region:</td><td>([^<]+)</td>", contents).group(1))
+        region_match = re.search("<td>Region:</td><td>([^<]+)</td>", contents)
+
+        if region_match:
+            project.Region = self._resolve_region(region_match.group(1))
+        else:
+            project.Region = self._resolve_region("Unknown")
+
         project.Region.MarkAsSeenInYear(project.Year)
         project.Region.ProvTerr = project.ProvTerr
 
-        finalist_names = re.search("<h3 style=\"margin-top: 0px;\">([^<]+)</h3>", contents).group(1).split(",")
+        finalist_names = []
+        finalist_names_match = re.search("<h3 style=\"margin-top: 0px;\">([^<]+)</h3>", contents)
+        if finalist_names_match:
+            finalist_names = finalist_names_match.group(1).split(",")
 
         for name in finalist_names:
             finalist = Finalist(name.strip(), project=project)
@@ -69,12 +80,12 @@ class Parser:
             finalist.Participant = self._resolve_participant(finalist)
             project.Finalists.append(finalist)
 
-        if len(project.Finalists) not in [1,2]:
-            raise "Invalid number of finalists"
-
-        divisions_names = re.finditer("<td>(Challenge|Division):</td><td>(?P<division>[^<]+)</td>", contents)
-        for div_name_match in divisions_names:
-            div = self._divisions.Find(div_name_match.group("division"))
+        divisions_names = re.search("<td>(Challenge|Division):</td><td>(?P<division>[^<]+)</td>", contents).group(2).split('/')
+        for name in divisions_names:
+            name = name.strip()
+            if name == "None":
+                continue
+            div = self._divisions.Find(name)
             div.MarkAsSeenInYear(project.Year)
             project.Divisions.append(div)
 

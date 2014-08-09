@@ -125,7 +125,7 @@ class SQLExporter:
                     "regid": project.ID,
                     "year": project.Year,
                     "name": project.Name,
-                    "finalista": project.Finalists[0].Participant.NormalizedName if project.Finalists[0].Participant.NormalizedName else None,
+                    "finalista": project.Finalists[0].Participant.NormalizedName if len(project.Finalists) > 0 and project.Finalists[0].Participant.NormalizedName else None,
                     "finalistb": project.Finalists[1].Participant.NormalizedName if len(project.Finalists) > 1 and project.Finalists[1].Participant.NormalizedName else None,
                     "diva": project.Divisions[0].NormalizedName,
                     "divb": project.Divisions[1].NormalizedName if len(project.Divisions) > 1 else None,

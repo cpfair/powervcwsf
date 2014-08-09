@@ -48,3 +48,4 @@ class Divisions:
         for div in self._divisions:
             if name in div.SearchNames:
                 return div
+        raise Exception("Division %s not found" % name)
