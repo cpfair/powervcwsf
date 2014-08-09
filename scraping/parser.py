@@ -49,23 +49,39 @@ class Parser:
     def Projects(self):
         return self._projects
 
-    def Parse(self, proj_pages_dirs):
+    def Parse(self, proj_pages_dirs, name_exception_file):
+        self._load_name_exceptions(name_exception_file)
         # Later takes precedence in this list
         proj_pages = {}
         for dir in proj_pages_dirs:
             files = os.listdir(dir)
-            # Filenames are either pid_year_agecat.htm or pid.html
-            proj_pages.update({int(re.match("^(\d+)", file).group(1)): dir+"/"+file for file in files})
+            for file in files:
+                pid = int(re.match("^(\d+)", file).group(1))
+                if pid not in proj_pages:
+                    proj_pages[pid] = []
+                proj_pages[pid].append(dir + "/" + file)
 
-        for pid, proj_page_path in proj_pages.items():
-            self._parse_page(pid, open(proj_page_path, "r").read())
+        for pid, proj_page_paths in proj_pages.items():
+            for path in proj_page_paths:
+                contents = open(path, "r").read()
+                if "Project ID missing" in contents or "Invalid project" in contents:
+                    continue
+                else:
+                    self._parse_page(pid, contents)
+                    break
 
         print("Finished with\n\t%d projects\n\t%d finalists\n\t%d participants\n\t%d regions" % (len(self._projects), len(self._finalists), len(self._participants), len(self._regions.keys())))
 
+    def _load_name_exceptions(self, path):
+        # The weird TSV format is a holdover from C# days when JSON was a pain
+        # It's <root normalizedname>\tFull Ambiguous Name
+        file = open(path, "r")
+        for line in file:
+            line = line.strip()
+            self._name_exceptions[line.split("\t")[1]] = line.split("\t")[0]
+
     def _parse_page(self, pid, contents):
         contents = contents.encode("utf-8").decode("latin-1")
-        if "Project ID missing" in contents or "Invalid project" in contents:
-            return
         logger.info(pid)
         project = Project(
             pid=pid,
@@ -132,6 +148,7 @@ class Parser:
                 return part
 
         new_participant = Participant(finalist)
+        new_participant.NormalizedName = search_name # To make exceptions work properly.
         self._participants.append(new_participant)
         return new_participant
 

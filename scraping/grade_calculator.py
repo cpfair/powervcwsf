@@ -1,4 +1,3 @@
-
 class GradeCalculator:
 	def CalculateForParticipants(participants):
 		for participant in participants:
