@@ -49,7 +49,7 @@ DisplayUtils.DivisionDisplay=function(div){
 };
 
 DisplayUtils.FormatCurrency=function(val){
-	if (val===null) return "&ndash;";
+	if (val===null || val==0) return "&ndash;";
 	return "$"+addCommas(val);
 };
 
