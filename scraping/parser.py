@@ -4,6 +4,7 @@ from project import Project
 from region import Region
 from divisions import Divisions
 from provterrs import ProvTerrs
+from award import Award, AwardType
 
 import os
 import re
@@ -23,6 +24,7 @@ class Parser:
         self._name_exceptions = {}
         self._divisions = Divisions()
         self._provterrs = ProvTerrs()
+        self._awardsParser = AwardsParser()
     def Parse(self, proj_pages_dirs):
         # Later takes precedence in this list
         proj_pages = {}
@@ -68,11 +70,16 @@ class Parser:
             div.MarkAsSeenInYear(project.Year)
             project.Divisions.append(div)
 
+        project.Awards = self._awardsParser.ParseAwards(contents)
+
         logger.debug("Project: %s (%d)" % (project.Name, project.Year))
         logger.debug("\tRegion: %s (%s)" % (project.Region, project.ProvTerr))
         logger.debug("\tFinalists: %s" % ", ".join([str(x) for x in project.Finalists]))
         logger.debug("\tDivisions: %s" % ", ".join([str(x) for x in project.Divisions]))
         logger.debug("\tSynopsis: %s..." % project.Synopsis[:80])
+        logger.debug("\tAwards:")
+        for award in project.Awards:
+            logger.debug("\t\t%s" % str(award))
 
     def _resolve_participant(self, finalist):
         search_name = self._normalize_name(finalist.Name)
@@ -94,10 +101,36 @@ class Parser:
             self._regions[name] = Region(name)
         return self._regions[name]
 
-
-
     def _normalize_name(self, name):
         return name
 
+class AwardsParser:
+    def __init__(self):
+        self._typeKeywords = {
+            AwardType.Cash: None, # Fallback
+            AwardType.Scholarship: ["scholarship"],
+            AwardType.Other: ["wiezmann", "australia", "milset"]
+        }
 
+    def ParseAwards(self, contents):
+        awards = []
+        awards_iter = re.finditer("<tr> <td><b>(?P<title>[^<]+)</b><br />(?P<description>.+?)</td> <td align=\"right\" valign=\"top\"><nobr>\$?(?P<value>[\d\.\s]+)?</nobr></td></tr>", contents)
+        for award_match in awards_iter:
+            award = Award(
+                name = award_match.group("title"),
+                description = award_match.group("description"),
+                value = float(award_match.group("value").replace(" ", "")) if award_match.group("value") else None,
+                type = AwardType.Unknown
+            )
+            keyword_text = str(award.Name + award.Description).lower()
+            for type, keywords in self._typeKeywords.items():
+                if not keywords:
+                    award.Type = type
+                    continue
+                for keyword in keywords:
+                    if keyword in keyword_text:
+                        award.Type = type
+                        break
+            awards.append(award)
 
+        return awards
