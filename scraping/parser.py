@@ -28,6 +28,27 @@ class Parser:
         self._provterrs = ProvTerrs()
         self._awardsParser = AwardsParser()
         self._agecats = AgeCats()
+
+    @property
+    def Participants(self):
+        return self._participants
+
+    @property
+    def Finalists(self):
+        return self._finalists
+
+    @property
+    def Regions(self):
+        return self._regions.values()
+
+    @property
+    def Divisions(self):
+        return self._divisions._divisions
+
+    @property
+    def Projects(self):
+        return self._projects
+
     def Parse(self, proj_pages_dirs):
         # Later takes precedence in this list
         proj_pages = {}

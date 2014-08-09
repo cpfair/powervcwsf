@@ -17,7 +17,7 @@ class SQLExporter:
         cursor = self._conn.cursor()
         cursor.execute("TRUNCATE TABLE `divisions`")
         # Blegh, I just want to finish this at this point, I don't care about accessing private members
-        for division in parser._divisions._divisions:
+        for division in parser.Divisions:
             cursor.execute("""
                 INSERT INTO `divisions`
                 (`NormalizedName`,`Name`,`FirstSeenYear`,`LastSeenYear`)
@@ -35,7 +35,7 @@ class SQLExporter:
     def _export_regions(self, parser):
         cursor = self._conn.cursor()
         cursor.execute("TRUNCATE TABLE `regions`")
-        for region in parser._regions.values():
+        for region in parser.Regions:
             cursor.execute("""
                 INSERT INTO `regions`
                 (`Name`,`NormalizedName`,`ProvTerr`,`FirstSeenYear`,`LastSeenYear`)
@@ -55,7 +55,7 @@ class SQLExporter:
         cursor = self._conn.cursor()
         cursor.execute("TRUNCATE TABLE `participants`")
 
-        for participant in parser._participants:
+        for participant in parser.Participants:
             cursor.execute("""
                 INSERT INTO `participants`
                 (
@@ -83,7 +83,7 @@ class SQLExporter:
         cursor = self._conn.cursor()
         cursor.execute("TRUNCATE TABLE `projects`")
 
-        for project in parser._projects:
+        for project in parser.Projects:
             cursor.execute("""
                 INSERT INTO `projects`
                     (
