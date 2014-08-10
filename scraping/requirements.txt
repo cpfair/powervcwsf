@@ -1,0 +1,4 @@
+requests
+pymsql
+colorama
+unidecode

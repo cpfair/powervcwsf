@@ -2,6 +2,7 @@
 mb_internal_encoding("UTF-8"); 
 $DB=new mysqli("cwsf.cpfx.ca","pvcwsf_public","public","powervcwsf");
 $DB->set_charset("latin1"); // just so we're clear...
+$DB->set_charset("utf8"); // just so we're clear...
 define("MODE_PROJECTS",0);
 define("MODE_PARTICIPANTS",1);
 if (isset($_REQUEST["mode"]) && $_REQUEST["mode"]=="participants"){
@@ -22,7 +23,7 @@ $FairYears[2012]="Charlottetown";
 $FairYears[2013]="Lethbridge";
 $FairYears[2014]="Windsor";
 
-$UpToDateYear=2013; //could pull from DB, could also just update it every year
+$UpToDateYear=2014; //could pull from DB, could also just update it every year
 
 define ("CAT_CHALLENGE",1);
 define ("CAT_DIVISION",2);

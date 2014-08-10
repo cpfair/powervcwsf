@@ -1,1 +1,4 @@
 *.sublime-workspace
+scraping/scrape-env
+scraping/proj_pages*
+*.pyc
