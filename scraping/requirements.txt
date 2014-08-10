@@ -1,2 +1,4 @@
 requests
 pymsql
+colorama
+unidecode

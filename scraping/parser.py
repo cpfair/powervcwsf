@@ -7,6 +7,7 @@ from provterrs import ProvTerrs
 from award import Award, AwardType
 from agecats import AgeCats
 from normalization import normalize
+import unicodedata
 
 import os
 import re
@@ -81,7 +82,7 @@ class Parser:
             self._name_exceptions[line.split("\t")[1]] = line.split("\t")[0]
 
     def _parse_page(self, pid, contents):
-        contents = contents.encode("utf-8").decode("latin-1")
+        contents = unicodedata.normalize("NFC", contents)
         logger.info(pid)
         project = Project(
             pid=pid,

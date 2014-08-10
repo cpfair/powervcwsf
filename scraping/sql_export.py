@@ -5,7 +5,7 @@ import json
 
 class SQLExporter:
     def __init__(self, host, user, password, db):
-        self._conn = pymysql.connect(host=host, user=user, passwd=password, db=db)
+        self._conn = pymysql.connect(host=host, user=user, passwd=password, db=db, charset='utf8')
 
     def Export(self, parser):
         self._export_divisions(parser)

@@ -2,6 +2,7 @@
 mb_internal_encoding("UTF-8"); 
 $DB=new mysqli("cwsf.cpfx.ca","pvcwsf_public","public","powervcwsf");
 $DB->set_charset("latin1"); // just so we're clear...
+$DB->set_charset("utf8"); // just so we're clear...
 define("MODE_PROJECTS",0);
 define("MODE_PARTICIPANTS",1);
 if (isset($_REQUEST["mode"]) && $_REQUEST["mode"]=="participants"){
