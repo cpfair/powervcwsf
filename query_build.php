@@ -11,8 +11,8 @@ class QueryBuilder {
 	protected $SelectClauses=array("*");
 	protected $JoinClauses=array();
 
-	private $StartIndex=0;
-	private $PageLength=50;
+	var $StartIndex=0;
+	var $PageLength=50;
 
 	private function PopulateOrderClausesFromParam($string,$order){
 		global $DB;
