@@ -60,6 +60,7 @@ Query.AppendResultsToTable=function(results){
 		$("<a class=\"vcwsfAction action\" target=\"_new\">").attr("href","https://secure.youthscience.ca/virtualcwsf/projectdetails.php?id="+res.RegID).text("View on YSC").appendTo(actionButtons);
 
 		var awards=$.parseJSON(res.AwardsData);
+		var awardsBox = null;
 		if (awards.length!==0){
 			//1=cash, 2=schol, 3=other
 			var cashAwards=[];
@@ -76,8 +77,8 @@ Query.AppendResultsToTable=function(results){
 				}
 			}
 
-			var awardsBox=$("<div class=\"awards\">").appendTo(resultHolder).html("<h1>Awards</h1>");
-			
+			awardsBox = $("<div class=\"awards\">").appendTo(resultHolder).html("<h1>Awards</h1>");
+
 			if (cashAwards.length>0){
 				$("<div class=\"awardGroup\"></div>").appendTo(awardsBox).html("Cash ("+DisplayUtils.FormatCurrency(res.CashAwardsValue)+")");
 				BuildAwardsRows(cashAwards,awardsBox);
@@ -127,7 +128,11 @@ Query.AppendResultsToTable=function(results){
 
 		$("<p class=\"synopsis\">").html(DisplayUtils.HighlightTerms(res.Synopsis,"Synopsis")).appendTo(resultHolder);
 		
-		
+		// Add second copy of results info for mobile layout
+		// And: no, can't do this with CSS :(
+		if (awardsBox) {
+			awardsBox.clone().addClass("alternate").appendTo(resultHolder);
+		}
 
 
 		$("<div>").css("clear","both").appendTo(resultHolder);

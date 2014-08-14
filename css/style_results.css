@@ -78,6 +78,10 @@
 	background-color:#eee;
 }
 
+.result .awards.alternate {
+	display: none;
+}
+
 .result .awards h1 {
 	display:none;
 	font-size:15px;
@@ -144,4 +148,23 @@
 
 .result .division {
 	background-image:url('../img/various-test-tube-2.png');
+}
+
+
+@media only screen and (max-width: 900px) {
+	.result .awards {
+		display:none;
+	}
+
+	.result .awards.alternate {
+		display: block;
+		float: none;
+		margin: 0;
+	}
+}
+
+@media only screen and (max-width: 740px) {
+	#resultsTable thead {
+		display:none;
+	}
 }

@@ -297,3 +297,37 @@ tr.alt {
 	text-align:center;
 	padding-bottom:40px;
 }
+
+@media only screen and (max-width: 1270px) { /* magic width where things start breaking */
+	#footer {
+		display: none;
+	}
+
+	.fieldGroup {
+		width: 100%;
+	}
+
+	.fieldGroup input[type=text] {
+		width:100%;
+	}
+
+	.fieldGroup table {
+		width: 100%;
+	}
+
+	.fieldGroup table td:first-child {
+		width: 100px;
+	}
+
+	#projectSearchGroup {
+		float:none;
+	}
+
+	#projectSearchGroup table {
+		float:none !important;
+		margin-left:0 !important;
+	}
+	#projectSearchGroup fieldset {
+		height: 185px;
+	}
+}
