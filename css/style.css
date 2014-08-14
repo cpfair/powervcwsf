@@ -315,6 +315,15 @@ tr.alt {
 		width: 100%;
 	}
 
+	.fieldGroup select {
+		width:100%;
+		overflow: hidden;
+	}
+
+	.fieldGroup option {
+		width: 100px; /* arbitrary value, has no meaning */
+	}
+
 	.fieldGroup table td:first-child {
 		width: 100px;
 	}
