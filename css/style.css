@@ -331,3 +331,7 @@ tr.alt {
 		height: 185px;
 	}
 }
+
+@-ms-viewport {
+	width: device-width;
+}
