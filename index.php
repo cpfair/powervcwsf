@@ -5,11 +5,11 @@ header("Content-Type: text/html; charset=UTF-8");
 <!doctype html>
 <html>
 	<head>
-		<title>Power Virtual Canada-Wide Science Fair</title>
+		<title>Canada-Wide Science Fair <?php echo $UpToDateYear;?> Results - Search CWSF projects from 2007 - <?php echo $UpToDateYear;?></title>
 		<meta charset="UTF-8">
 		<meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
 		<meta name="Description" content="Search, filter, and sort all Canada-Wide Science Fair results.">
-		<meta name="Keywords" content="Canada Wide Science Fair, CWSF, ESPC, Results, Awards, Search, Filter, Historical, Statistics, Database, Records, Sort, Order, youth science, youth science canada">
+		<meta name="Keywords" content="Canada Wide Science Fair, <?php echo $UpToDateYear;?>, CWSF, ESPC, Results, Awards, Search, Filter, Historical, Statistics, Database, Records, Sort, Order, youth science, youth science canada">
 
 		<link rel="stylesheet" type="text/css" href="min/?g=css">
 		
@@ -47,7 +47,7 @@ header("Content-Type: text/html; charset=UTF-8");
 		<div id="introduction">
 			<h1>Welcome to Power VCWSF</h1>
 			<p>
-				Here, you can search every <a href="http://cwsf.youthscience.ca" target="_blank">Canada-Wide Science Fair</a> project from 2005 to today. You can also sort projects by nearly anything, find all the projects that won a specific award, view a participant's science fair history, and more.
+				Here, you can search every <a href="http://cwsf.youthscience.ca" target="_blank">Canada-Wide Science Fair</a> project from 2005 to <?php echo $UpToDateYear;?>. You can also sort projects, find all the projects that won a specific award, view a participant's science fair history, and more.
 			</p>
 			<p>
 				These results are derived from <a href="https://secure.youthscience.ca/virtualcwsf/" target="_blank">the official CWSF results system</a>.
