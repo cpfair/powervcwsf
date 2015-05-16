@@ -1,5 +1,5 @@
 <?php
-mb_internal_encoding("UTF-8"); 
+mb_internal_encoding("UTF-8");
 $DB=new mysqli("cwsf-db.cpfx.ca","pvcwsf_public","public","powervcwsf");
 $DB->set_charset("latin1"); // just so we're clear...
 $DB->set_charset("utf8"); // just so we're clear...
@@ -22,8 +22,9 @@ $FairYears[2011]="Toronto";
 $FairYears[2012]="Charlottetown";
 $FairYears[2013]="Lethbridge";
 $FairYears[2014]="Windsor";
+$FairYears[2015]="Fredericton";
 
-$UpToDateYear=2014; //could pull from DB, could also just update it every year
+$UpToDateYear=2015; //could pull from DB, could also just update it every year
 
 define ("CAT_CHALLENGE",1);
 define ("CAT_DIVISION",2);
