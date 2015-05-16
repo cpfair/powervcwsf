@@ -5,7 +5,7 @@ header("Content-Type: text/html; charset=UTF-8");
 <!doctype html>
 <html>
 	<head>
-		<title>Canada-Wide Science Fair <?php echo $UpToDateYear;?> Results - Search CWSF projects from 2007 - <?php echo $UpToDateYear;?></title>
+		<title>Canada-Wide Science Fair <?php echo $UpToDateYear;?> Results - Search CWSF projects from 2005 - <?php echo $UpToDateYear;?></title>
 		<meta charset="UTF-8">
 		<meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
 		<meta name="Description" content="Search, filter, and sort all Canada-Wide Science Fair results.">
