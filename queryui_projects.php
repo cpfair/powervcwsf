@@ -28,7 +28,7 @@ include "queryui_sub_finalist.php";
 						<option value="">Any</option>
 						<?php
 							for ($year=$UpToDateYear; $year >= 2005; $year--) { 
-								echo "<option value=\"$year\">$year - ".$FairYears[$year]."</option>";
+								echo "<option value=\"$year\">$year - ".htmlentities(utf8_decode($FairYears[$year]))."</option>";
 							}
 						?>
 					</select>
