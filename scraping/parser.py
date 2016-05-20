@@ -170,9 +170,16 @@ class AwardsParser:
         awards = []
         awards_iter = re.finditer("<tr> <td><b>(?P<title>[^<]+)</b><br />(?P<description>.+?)</td> <td align=\"right\" valign=\"top\"><nobr>\$?(?P<value>[\d\.\s]+)?</nobr></td></tr>", contents)
         for award_match in awards_iter:
+            title = award_match.group("title")
+            description = award_match.group("description")
+            if "Medal" in description and "Excellence Award -" in title:
+                # Fix the title to be more useful.
+                title = title.split("-")[0] + "- " + \
+                        re.search(r"\w+ medal", description, re.IGNORECASE).group(0) + " -" + \
+                        title.split("-")[-1]
             award = Award(
-                name = award_match.group("title"),
-                description = award_match.group("description"),
+                name = title,
+                description = description,
                 value = float(award_match.group("value").replace(" ", "")) if award_match.group("value") else None,
                 type = AwardType.Unknown
             )
