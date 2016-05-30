@@ -52,10 +52,6 @@ header("Content-Type: text/html; charset=UTF-8");
 			<p>
 				These results are derived from <a href="https://secure.youthscience.ca/virtualcwsf/" target="_blank">the official CWSF results system</a>.
 			</p>
-						<h2>Update:</h2>
-			<p>
-				Thanks to <a href="http://layeh.com/" target="_blank">Tim Cooper</a>, you can now search by divisions and challenges!
-			</p>
 		</div>
 		<div id="resultsTable">
 			<table style="width:100%;">
