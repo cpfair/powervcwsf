@@ -66,7 +66,7 @@ header("Content-Type: text/html; charset=UTF-8");
 			</div>
 		</div>
 		<div id="footer">
-			<div id="about"><a href="#" onclick="this.endpoint='system';Query.InsightButton.call(this);return false;">About PowerVCWSF</a> | <a href="mailto:cpf@cpfx.ca">Report an issue</a> | Data last updated May 19 2016</div>
+			<div id="about"><a href="#" onclick="this.endpoint='system';Query.InsightButton.call(this);return false;">About PowerVCWSF</a> | <a href="mailto:cpf@cpfx.ca">Report an issue</a> | Data last updated May 24 2017</div>
 			<div id="resultCt">Loading...</div>
 			<div id="loading">Loading...</div>
 			<div id="attrib">Please note that these data and calculations are not warranted for accuracy.<br/>This system is not affiliated with Youth Science Canada.</div>
