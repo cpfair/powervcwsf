@@ -128,7 +128,7 @@ $fout = fopen($path,"wb");
 $ch = curl_init("https://secure.youthscience.ca/virtualcwsf/viewphoto.php?width=$size&id=$id");
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-curl_setopt($ch, CURLOPT_SSLVERSION, 3);
+curl_setopt($ch, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1_2);
 curl_setopt($ch, CURLOPT_FILE, $fout);
 curl_setopt($ch, CURLOPT_HEADER, 0); 
 
